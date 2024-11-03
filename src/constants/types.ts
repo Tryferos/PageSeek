@@ -1,4 +1,3 @@
-// import { FontFamilyType } from "@/types/global"
 import localFont from "next/font/local"
 
 const wotfardRegular = localFont({
