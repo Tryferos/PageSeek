@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        ['wotfardRg']: ['var(--font-wotfard-regular)', 'Arial', 'sans-serif'],
+        ['wotfardMd']: ['var(--font-wotfard-medium)', 'Arial', 'sans-serif'],
+        ['wotfardSb']: ['var(--font-wotfard-semibold)', 'Arial', 'sans-serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
