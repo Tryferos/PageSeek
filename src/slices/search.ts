@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 type State = {
-    query: string
+    query: string | null;
     setQuery: (q: string) => void
 }
 export const useSearch = create<State>()((set, get, store) => ({
