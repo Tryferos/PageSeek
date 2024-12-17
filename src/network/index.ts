@@ -1,4 +1,5 @@
-
+'use server';
+import 'server-only';
 type GetRequestProps<T, K> = {
   url: string;
   formatData?: (data: any) => T;
@@ -9,15 +10,16 @@ type GetRequestProps<T, K> = {
 
 type PostRequestProps<T, K> = GetRequestProps<T, K> & {
   body?: KeyType;
-}
+};
 
-type KeyType = { [key: string]: string | number | boolean | null | undefined; };
+type KeyType = {[key: string]: string | number | boolean | null | undefined};
 
 class Network {
   private static _minumumResponseTime = 500;
   private static _headers = () => {
     return {
       'Content-Type': 'application/json',
+      'cache-control': 'max-age=10000',
     };
   };
 
@@ -30,7 +32,7 @@ class Network {
         .map(key => `${key}=${params[key]}`)
         .join('&')}`;
     } else {
-      return url;
+      return '';
     }
   }
 
@@ -40,10 +42,7 @@ class Network {
     params,
     useMinimumResponseTime,
   }: GetRequestProps<T, K>): Promise<T | null> {
-    const urlToCall = `${url}${this.createUrl<K>(
-      url,
-      params,
-    )}`;
+    const urlToCall = `${url}${this.createUrl<K>(url, params)}`;
     try {
       const currentMS1 = new Date().getTime();
       const response = await fetch(urlToCall, {
@@ -83,10 +82,7 @@ class Network {
     method = 'POST',
     useMinimumResponseTime,
   }: PostRequestProps<T, K>): Promise<T | null> {
-    const urlToCall = `${url}${this.createUrl<K>(
-      url,
-      params,
-    )}`;
+    const urlToCall = `${url}${this.createUrl<K>(url, params)}`;
     try {
       const currentMS1 = new Date().getTime();
       const response = await fetch(urlToCall, {
