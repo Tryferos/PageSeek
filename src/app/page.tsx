@@ -1,11 +1,10 @@
-import { Article } from './Article';
-
 export default function Home() {
   return (
-    <div className='h-[200vh] p-20'>
+    <div className="">
       <title>Search Engine</title>
-      hello world
-      <Article/>
+      <p className="bg-gradient-to-r w-[20%] from-orange-300 via-orange-500 to-orange-700 to-[80%] text-transparent text-white text-6xl font-wotfardSb bg-clip-text">
+        Hello World
+      </p>
     </div>
   );
 }
