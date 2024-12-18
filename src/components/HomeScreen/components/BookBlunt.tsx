@@ -21,7 +21,6 @@ export const BookBlunt = ({book}: Props) => {
     editions,
     author_image,
   } = book;
-  console.log(author_image);
   return (
     <div className="w-full h-full flex gap-x-4 cursor-pointer hover:scale-101 hover:-translate-x-[2px] hover:-translate-y-[2px]  transition-all hove:bg-white bg-gray-100 shadow-book-result hover:shadow-book-result-hover rounded-md py-4 px-4 relative">
       <figure className="relative w-[15vh] min-w-[128px] h-full">
@@ -38,7 +37,7 @@ export const BookBlunt = ({book}: Props) => {
         <StarIcon />
       </div>
       <div className="gap-y-2 flex flex-col relative w-full">
-        <p className="text-m font-wotfardMd w-[82.5%]">
+        <p className="text-m font-wotfardMd w-[80%]">
           <Highlighted text={title} highlight={query ?? ''} />
         </p>
         <div className="text-sm font-wotfardRg text-secondary flex flex-col gap-y-1">
