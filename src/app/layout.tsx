@@ -15,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${FontFamilies.wotfard} antialiased py-6 px-12 font-wotfard font-wotfardRg scrollbar`}>
-        {children}
+        className={`${FontFamilies.wotfard} antialiased font-wotfard font-wotfardRg scrollbar`}>
+        <main className="w-[100%] h-[100%] py-6 px-12 bg-gray-200">
+          {children}
+        </main>
       </body>
     </html>
   );
