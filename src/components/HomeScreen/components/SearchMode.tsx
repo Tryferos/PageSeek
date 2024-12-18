@@ -7,26 +7,12 @@ import {useSearch} from '@/slices/search';
 import {useLoading} from '@/slices/loading';
 import {QueryBooks} from '@/network/search';
 import {useSearchResult} from '@/slices/search_result';
+import {useSearchHandler} from '@/hooks/useSearchHandler';
 type Props = {};
 export const SearchMode: FC<Props> = () => {
-  const {query, setQuery, isQueryValid} = useSearch();
-  const {setLoading, loading} = useLoading();
-  const {setResult} = useSearchResult();
+  const {query, setQuery} = useSearch();
+  const {searchBooks} = useSearchHandler();
 
-  const searchBooks = async () => {
-    if (isQueryValid && query) {
-      setLoading(true);
-      const res = await QueryBooks({
-        query: query,
-        includeThumbnail: true,
-        queryType: 'q',
-        limit: 9,
-        page: 1,
-      });
-      setResult(res);
-      setLoading(false);
-    }
-  };
   return (
     <div className="basis-[50%] w-full px-4">
       <SearchBar
