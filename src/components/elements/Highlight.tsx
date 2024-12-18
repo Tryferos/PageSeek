@@ -1,4 +1,4 @@
-export const Highlighted = ({text = '', highlight = ''}) => {
+export const Highlighted = ({text = '', highlight = '', className = ''}) => {
   if (!highlight.trim()) {
     return <span>{text}</span>;
   }
@@ -6,7 +6,7 @@ export const Highlighted = ({text = '', highlight = ''}) => {
 
   const parts = text.split(regex);
   return (
-    <span>
+    <span className={className}>
       {parts
         .filter(part => part)
         .map((part, i) => {
