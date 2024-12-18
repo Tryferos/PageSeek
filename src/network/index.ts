@@ -1,5 +1,6 @@
 'use server';
-import 'server-only';
+import {useSearch} from '@/slices/search';
+
 type GetRequestProps<T, K> = {
   url: string;
   formatData?: (data: any) => T;
@@ -17,10 +18,7 @@ type KeyType = {[key: string]: string | number | boolean | null | undefined};
 class Network {
   private static _minumumResponseTime = 500;
   private static _headers = () => {
-    return {
-      'Content-Type': 'application/json',
-      'cache-control': 'max-age=10000',
-    };
+    return {};
   };
 
   private static createUrl<K extends KeyType = KeyType>(
