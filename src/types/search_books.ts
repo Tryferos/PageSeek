@@ -26,6 +26,8 @@ export type BookDocument = {
   //* ISBN
   isbn?: Array<string>;
   thumbnail?: string | null;
+  author_image?: string | null;
+  seed?: Array<string>;
 };
 
 export type BookDocumentBlunt = Pick<
@@ -39,6 +41,8 @@ export type BookDocumentBlunt = Pick<
   | 'isbn'
   | 'editions'
   | 'author_name'
+  | 'seed'
+  | 'author_image'
 >;
 /*
  * /books/${key}.json
