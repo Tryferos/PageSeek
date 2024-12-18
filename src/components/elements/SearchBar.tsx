@@ -1,15 +1,22 @@
-import {SearchIcon} from '@/icons/Search';
+import {SearchIcon} from '@/icons/Icons';
 import {FC} from 'react';
 
 type Props = {
   search: string;
   setSearch: (s: string) => void;
-  onIconClick?: () => void;
+  searchFunction?: () => void;
 };
 
-export const SearchBar: FC<Props> = ({search, setSearch, onIconClick}) => {
+export const SearchBar: FC<Props> = ({search, setSearch, searchFunction}) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      searchFunction?.();
+    }
+  };
   return (
-    <div className="justify-start pointer-events-auto flex px-4 py-3 bg-white rounded-full w-[40%] items-center">
+    <div
+      onKeyDown={onKeyDown}
+      className="justify-start pointer-events-auto flex px-4 py-3 bg-white rounded-full w-[100%] items-center">
       <input
         className="focus:outline-none w-full"
         type="text"
@@ -17,7 +24,7 @@ export const SearchBar: FC<Props> = ({search, setSearch, onIconClick}) => {
         onChange={ev => setSearch(ev.target.value)}
         placeholder="Query..."
       />
-      <SearchIcon onClick={onIconClick} />
+      <SearchIcon onClick={searchFunction} />
     </div>
   );
 };
