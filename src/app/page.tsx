@@ -1,5 +1,13 @@
-import HomeScreen from '@/components/HomeScreen/HomeScreen';
+'use client';
+import {Experience} from './three/Experience';
+import {Suspense} from 'react';
 
 export default function Home() {
-  return <HomeScreen />;
+  return (
+    <>
+      <Suspense>
+        <Experience />
+      </Suspense>
+    </>
+  );
 }

@@ -1,11 +1,10 @@
 import type {Metadata} from 'next';
-import './globals.css';
 import {FontFamilies} from '@/constants/types';
 import {GlobalLoader} from '@/components/elements/GlobalLoader';
 
 export const metadata: Metadata = {
-  title: '3D Version',
-  description: 'Three.js Web App',
+  title: 'Normal Version',
+  description: 'Tranditional Web App',
 };
 
 export default function RootLayout({
@@ -14,11 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${FontFamilies.wotfard} antialiased font-wotfard font-wotfardRg scrollbar`}>
-        {children}
-      </body>
-    </html>
+    <main className="w-[100%] h-[100%] py-6 px-12 bg-gray-200 relative">
+      {children}
+      <GlobalLoader />
+    </main>
   );
 }
