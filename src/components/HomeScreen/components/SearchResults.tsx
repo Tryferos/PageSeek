@@ -10,11 +10,25 @@ import {useSearchResult} from '@/slices/search_result';
 import {useLoading} from '@/slices/loading';
 import {ResultPagination} from './ResultPagination';
 import {usePagination} from '@/slices/pagination';
+import Link from 'next/link';
+import {useImageStore} from '@/slices/image_store';
 export const SearchResults = () => {
   const {getPageResult} = useSearchResult();
   const {loading} = useLoading();
   const {currentPage} = usePagination();
   const pageResult = getPageResult(currentPage);
+  const {addImage, images} = useImageStore();
+
+  useEffect(() => {
+    if (pageResult?.docs) {
+      pageResult.docs.forEach(book => {
+        if (book.thumbnail) {
+          addImage(book.thumbnail, book.key);
+        }
+      });
+    }
+  }, [pageResult]);
+
   if (loading && !pageResult?.docs.length) {
     return (
       <ListWrapper>
@@ -33,7 +47,9 @@ export const SearchResults = () => {
             <li
               key={book.key}
               className="basis-[30%] min-h-[30%] max-h-[35%] flex flex-col gap-4 min-w-[350px]">
-              <BookBlunt book={book} />
+              <Link className="w-full h-full" href={`${book.key}`}>
+                <BookBlunt book={book} />
+              </Link>
             </li>
           ))}
         </ListWrapper>

@@ -45,6 +45,20 @@ h6 {
   overflow-wrap: break-word;
 }
 
+.scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 6px;
+  background-color: transparent;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 4px;
+}
+.scrollbar::-webkit-scrollbar-truck {
+  background-color: transparent;
+  border-radius: 4px;
+}
+
 .fixgradient {
   background-size: auto 1.9ch;
 }
@@ -70,4 +84,57 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-wrapper article {
+  width: 620px;
+  height: 980px;
+  border: none;
+  border-radius: 20px;
+  position: relative;
+}
+
+canvas {
+  pointer-events: auto;
+}
+
+.bookeffect {
+  position: relative;
+  height: 3.5vh;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.linear-gradient {
+  background: linear-gradient(to right bottom, #c2410c, #f97316);
+}
+
+.bookeffect::before {
+  background: radial-gradient(#fed7aa, transparent, transparent);
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 200px;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  top: var(--y);
+  left: var(--x);
+  transition:
+    0.5s,
+    top 0s,
+    left 0s;
+}
+
+.bookeffect::after {
+  border-radius: 4px;
+  content: '';
+  position: absolute;
+  inset: 1.5px;
+  background: linear-gradient(to right bottom, #c2410c, #f97316);
+  opacity: 0.6;
+}
+
+.bookeffect:hover::before {
+  opacity: 1;
 }

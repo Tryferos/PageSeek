@@ -11,7 +11,8 @@ export const Endpoints: Readonly<{
     | 'WorksKeyRating'
     | 'WorksKeyPopularity'
     | 'SubjectsKey'
-    | 'AuthorImage']: {
+    | 'AuthorImage'
+    | 'BookLinks']: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     generate: (...args: any[]) => string;
   };
@@ -46,5 +47,9 @@ export const Endpoints: Readonly<{
   AuthorImage: {
     generate: (key: string) =>
       `https://covers.openlibrary.org/a/olid/${key}.jpg`,
+  },
+  BookLinks: {
+    generate: (key: string) =>
+      `https://openlibrary.org/api/books?bibkeys=OLID:${key}&format=json`,
   },
 });

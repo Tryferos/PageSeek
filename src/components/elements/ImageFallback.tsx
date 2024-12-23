@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import {DetailedHTMLProps, ImgHTMLAttributes, useEffect, useState} from 'react';
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
   alt: string;
   fill?: boolean;
   loading?: 'eager' | 'lazy';
+  quality?: number;
 };
 
 export default function ImageFallback({src, fallbackSrc, ...rest}: Props) {

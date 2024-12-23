@@ -1,6 +1,8 @@
 import Network from '.';
 import {Endpoints} from '@/constants/endpoints';
+import {useImageStore} from '@/slices/image_store';
 import {
+  BookLinks,
   BookWork,
   BookWorkPopularity,
   BookWorkRatings,
@@ -17,15 +19,46 @@ export const getBookWork = async ({
     url: Endpoints.WorksKey.generate(key),
   });
   if (res) {
+    let thumbnail: string | null = null;
+    if (res.cover_edition) {
+      thumbnail = await getBookThumbnail(res?.cover_edition);
+    }
+    let description =
+      typeof res.description === 'object'
+        ? (res.description as {value: string}).value
+        : res.description;
+    const redundantDescription = description?.indexOf('---');
+    if (redundantDescription > -1) {
+      description = description?.slice(0, redundantDescription);
+    }
     return {
       ...res,
+      key: undefined,
+      description: description,
+      _key: res.key,
+      thumbnail: thumbnail,
       author_photo: Endpoints.AuthorImage.generate(
-        (res as any).authors[0]?.author?.key ?? '',
+        (res as any).authors[0]?.author?.key.replace('/authors/', '') ?? '',
       ),
     };
   } else {
     return res;
   }
+};
+
+const getBookThumbnail = async ({
+  key,
+}: Partial<WorksProps>): Promise<string | null> => {
+  if (!key) {
+    return null;
+  }
+  const res = await Network.get<BookLinks>({
+    url: Endpoints.BookLinks.generate(key.replace('/books/', '')),
+  });
+  if (res) {
+    return Object.values(res)?.[0]?.thumbnail_url?.replace('-S', '-L');
+  }
+  return res;
 };
 
 export const getBookWorkRich = async ({

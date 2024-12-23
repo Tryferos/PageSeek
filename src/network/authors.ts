@@ -17,7 +17,10 @@ type AuthorWorkPros = AuthorPros & {
   offset?: number;
 };
 
-export const getAuthor = async ({key}: AuthorPros): Promise<Author | null> => {
+export const getAuthor = async ({
+  key: _key,
+}: AuthorPros): Promise<Author | null> => {
+  const key = _key.replace('/authors/', '');
   const res = await Network.get<Author>({
     url: Endpoints.AuthorQuery.generate(key),
   });

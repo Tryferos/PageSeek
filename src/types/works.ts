@@ -4,15 +4,23 @@ import {BookDocument, KeyReferences} from './search_books';
  * /works/${key}.json
  */
 export type BookWork = {
-  key: string; // * /works/${key}.json
+  key?: string;
+  _key?: string; // * /works/${key}.json
   title: string;
   author_photo?: string;
+  thumbnail?: string | null;
   description: string;
   subjects?: Array<string>;
+  authors?: Array<{author: KeyReferences[0]}>;
+  cover_edition: KeyReferences[0];
   subject_places?: Array<string>;
   subject_people?: Array<string>;
   subject_times?: Array<string>;
+  first_publish_date?: string;
+  links: BookWorkLinks;
 };
+
+type BookWorkLinks = Array<{title: string; url: string}>;
 
 export type BookWorkRatings = {
   summary: {
@@ -32,4 +40,10 @@ export type BookWorkPopularity = {
 export type BookWorkRich = BookWork & {
   ratings?: BookWorkRatings['summary'];
   popularity?: BookWorkPopularity['counts'];
+};
+
+export type BookLinks = {
+  [key: string]: {
+    thumbnail_url: string;
+  };
 };
