@@ -18,7 +18,7 @@ export const BookSubjects = (props: Props) => {
     } else if (key === 'subject_places') {
       return 'Important Places';
     } else if (key === 'subject_times') {
-      return 'Took Place';
+      return 'Chronology';
     } else {
       return 'Other';
     }

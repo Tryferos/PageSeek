@@ -48,7 +48,7 @@ export const BookWork = ({
             <BookStatistics popularity={popularity} ratings={ratings} />
             {first_publish_date && (
               <p className="text-sm text-secondary">
-                Published at {first_publish_date}.
+                Published on {first_publish_date}.
               </p>
             )}
           </div>

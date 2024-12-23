@@ -11,7 +11,7 @@ export const BookStatistics = ({popularity, ratings}: Props) => {
             <span className="font-wotfardRg">Rated </span>
             <div className="flex items-center gap-x-0">
               <span className="font-wotfardMd">
-                {ratings?.average.toFixed(1) ?? '0'}
+                {ratings?.average?.toFixed(1) ?? '0'}
               </span>
               <StarIcon />
             </div>

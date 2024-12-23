@@ -67,7 +67,7 @@ export const BookBlunt = ({book}: Props) => {
             </span>
           </p>
           <p className="text-sm font-wotfardRg text-secondary">
-            Published at{' '}
+            Published on{' '}
             <span className="font-wotfardMd">
               {' '}
               <Highlighted
