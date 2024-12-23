@@ -18,8 +18,8 @@ export const WorksAuthor = async ({authorKey, author_photo}: Props) => {
       <div className="flex gap-x-2 items-end">
         <figure className="w-[48px] h-[48px] relative">
           <ImageFallback
-            src={author_photo ?? '/file.svg'}
-            fallbackSrc="/file.svg"
+            src={author_photo ?? '/profile.svg'}
+            fallbackSrc="/profile.svg"
             alt={author.name}
             fill
           />
