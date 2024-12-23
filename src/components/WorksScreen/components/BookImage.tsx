@@ -22,8 +22,8 @@ export const BookImage = ({thumbnail: _thumbnail, title, bookKey}: Props) => {
     <figure className="relative w-[25vw] min-w-[128px] h-[35vw] min-h-[300px] bg-black">
       <ImageFallback
         quality={100}
-        fallbackSrc="/file.svg"
-        src={thumbnail ?? 'file.svg'}
+        fallbackSrc="/book.png"
+        src={thumbnail ?? '/book.png'}
         alt={title}
         fill
       />

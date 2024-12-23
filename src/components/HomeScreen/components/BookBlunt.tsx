@@ -25,10 +25,11 @@ export const BookBlunt = ({book}: Props) => {
     <div className="w-full h-full flex gap-x-4 cursor-pointer hover:scale-101 hover:-translate-x-[2px] hover:-translate-y-[2px]  transition-all hove:bg-white bg-gray-100 shadow-book-result hover:shadow-book-result-hover rounded-md py-4 px-4 relative">
       <figure className="relative w-[15vh] min-w-[128px] h-full">
         <ImageFallback
-          fallbackSrc="/file.svg"
-          src={thumbnail ?? `/file.svg`}
+          fallbackSrc="/book.svg"
+          src={thumbnail ?? `/book.svg`}
           alt={title}
           fill
+          quality={100}
           loading="lazy"
         />
       </figure>
