@@ -1,6 +1,6 @@
 'use client';
 
-import {useMemo, useRef} from 'react';
+import {useRef} from 'react';
 
 export const BookEffect = () => {
   const ref = useRef<HTMLDivElement>(null);

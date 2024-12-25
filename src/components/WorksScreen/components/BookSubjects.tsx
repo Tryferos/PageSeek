@@ -38,7 +38,7 @@ export const BookSubjects = (props: Props) => {
 
   const subjects = useMemo(() => {
     //* Filter out non-english words
-    let _props: typeof props = {};
+    const _props: typeof props = {};
     Object.keys(props).forEach(key => {
       const subjects = props[key as keyof Props]?.filter(subject =>
         /[A-Za-z][A-Za-z0-9]*/i.test(subject),
@@ -79,7 +79,7 @@ export const BookSubjects = (props: Props) => {
           </div>
         )}
         <div className="grid grid-flow-row grid-row-4 grid-cols-6 gap-x-6 px-3 py-2 rounded-md min-h-[75px] transition-all">
-          {subjects[selectedSubject]?.map((subject: any, i: number) => (
+          {subjects[selectedSubject]?.map((subject, i: number) => (
             <p
               key={i}
               className="text-sm font-wotfardRg text-secondary hover:underline cursor-default min-w-[50px]">

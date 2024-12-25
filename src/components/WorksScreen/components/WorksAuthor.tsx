@@ -1,7 +1,6 @@
 import ImageFallback from '@/components/elements/ImageFallback';
 import {getAuthor} from '@/network/authors';
 import Link from 'next/link';
-import {Suspense} from 'react';
 
 type Props = {
   authorKey?: string;

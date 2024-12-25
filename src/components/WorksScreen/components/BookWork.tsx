@@ -1,5 +1,3 @@
-import ImageFallback from '@/components/elements/ImageFallback';
-import {useImageStore} from '@/slices/image_store';
 import {BookWorkRich} from '@/types/works';
 import {WorksAuthor} from './WorksAuthor';
 import {BookImage} from './BookImage';

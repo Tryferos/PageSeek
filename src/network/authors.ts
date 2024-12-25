@@ -27,6 +27,8 @@ export const getAuthor = async ({
   if (res) {
     return {
       ...res,
+      _key: res.key,
+      key: undefined,
       photo: Endpoints.AuthorImage.generate(key),
     };
   }
@@ -36,18 +38,23 @@ export const getAuthor = async ({
 export const getAuthorWorksRich = async (
   props: AuthorWorkPros,
 ): Promise<AuthorWorksRich | null> => {
-  const res = await getAuthorWorks(props);
+  const res = await getAuthorWorks({
+    ...props,
+    key: props.key.replace('/authors/', ''),
+  });
   if (res) {
     const authorWorksRich: AuthorWorksRichEntry[] = [];
     for (const entry of res.entries) {
-      const book = await getBookWorkRich({key: entry.key});
+      const book = await getBookWorkRich({
+        key: entry.key.replace('/works/', ''),
+      });
       if (book) {
         authorWorksRich.push({book, ...entry});
       }
     }
     return {
       ...res,
-      size: 1,
+      size: res.size,
       entries: authorWorksRich,
     };
   }
@@ -56,7 +63,7 @@ export const getAuthorWorksRich = async (
 
 const getAuthorWorks = async ({
   key,
-  limit = 3,
+  limit = 5,
   offset = 0,
 }: AuthorWorkPros): Promise<AuthorWorks | null> => {
   const res = await Network.get<AuthorWorks>({

@@ -1,4 +1,5 @@
-import {BookDocument, KeyReferences} from './search_books';
+import {Link} from './author';
+import {KeyReferences} from './search_books';
 
 /*
  * /works/${key}.json
@@ -17,10 +18,8 @@ export type BookWork = {
   subject_people?: Array<string>;
   subject_times?: Array<string>;
   first_publish_date?: string;
-  links: BookWorkLinks;
+  links: Array<Link>;
 };
-
-type BookWorkLinks = Array<{title: string; url: string}>;
 
 export type BookWorkRatings = {
   summary: {

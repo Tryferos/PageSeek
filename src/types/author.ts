@@ -4,8 +4,12 @@ import {BookWorkRich} from './works';
  * /authors/${key}.json
  */
 export type Author = {
-  key: string; // * /authors/${key}.json
+  key?: string; // * /authors/${key}.json
+  _key?: string; // * /authors/${key}.json
   name: string;
+  fuller_name?: string;
+  death_date?: string;
+  birth_date?: string;
   alternate_names?: Array<string>;
   title?: string;
   bio?: string;
@@ -14,7 +18,7 @@ export type Author = {
   links?: Array<Link>;
 };
 
-type Link = {
+export type Link = {
   title: string;
   url: string;
 };

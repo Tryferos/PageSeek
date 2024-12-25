@@ -5,7 +5,7 @@ import {useRouter} from 'next/navigation';
 export const BackNavigation = () => {
   const router = useRouter();
   const onBack = () => {
-    router.push('/');
+    router.back();
   };
   return <BackIcon width={24} height={24} onClick={onBack} />;
 };
