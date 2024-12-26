@@ -28,6 +28,7 @@ export const getAuthor = async ({
     return {
       ...res,
       _key: res.key,
+      bio: (res.bio as unknown as {value: string})?.value ?? res.bio,
       key: undefined,
       photo: Endpoints.AuthorImage.generate(key),
     };

@@ -50,7 +50,7 @@ export const AuthorInfo = ({
             </p>
             {links.length > 0 && (
               <div className="flex flex-col gap-y-3">
-                <p className="text-sm text-secondary">{bio}</p>
+                {bio && <p className="text-sm text-secondary">{bio}</p>}
                 <BookLinks links={links} />
               </div>
             )}

@@ -1,6 +1,5 @@
 import {getAuthorWorksRich} from '@/network/authors';
 import {AuthorBook} from './AuthorBook';
-import {useMemo} from 'react';
 
 type Props = {
   id: string;
