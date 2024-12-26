@@ -1,5 +1,5 @@
 import {BookWorkRich} from '@/types/works';
-import {NotFound} from './components/NotFound';
+import {NotFound} from '../client/NotFound';
 import {BookWork} from './components/BookWork';
 
 type Props = {

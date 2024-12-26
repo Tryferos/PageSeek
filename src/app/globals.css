@@ -124,7 +124,7 @@ canvas {
   background-position: 85% 50%;
 }
 
-.authorbook {
+.backgroundeffect {
   background: linear-gradient(to right top, #ea580c 40%, #fb923c 70%);
   background-size: 300% 100%;
   background-position: 50% 50%;
@@ -134,7 +134,7 @@ canvas {
     box-shadow 0.2s ease;
 }
 
-.authorbook:hover {
+.backgroundeffect:hover {
   background-position: 100% 50%;
 }
 
