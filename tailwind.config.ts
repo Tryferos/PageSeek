@@ -28,6 +28,10 @@ const config: Config = {
       boxShadow: {
         'book-result': '0px 0px 10px rgba(0, 0, 0, 0.1)',
         'book-result-hover': '0px 0px 16px rgba(0, 0, 0, 0.15)',
+        'book-box':
+          '0px 0px 0px 1px rgba(194,65,12,0.8), 1px 1px 0px 1px rgba(194,65,12,0.8), 2px 2px 0px 1px rgba(194,65,12,0.8), 3px 3px 0px 1px rgba(194,65,12,0.8), 4px 4px 0px 1px rgba(194,65,12,0.8)',
+        'book-box-hover':
+          '0px 0px 0px 1px rgba(194,65,12,0.8), 1px 1px 0px 1px rgba(194,65,12,0.8), 2px 2px 0px 1px rgba(194,65,12,0.8), 3px 3px 0px 1px rgba(194,65,12,0.8), 4px 4px 0px 1px rgba(194,65,12,0.8), 5px 5px 0px 1px rgba(194,65,12,0.8), 6px 6px 0px 1px rgba(194,65,12,0.8)',
       },
     },
   },

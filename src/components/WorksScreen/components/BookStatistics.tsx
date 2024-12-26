@@ -4,7 +4,7 @@ import {BookWorkRich} from '@/types/works';
 type Props = Pick<BookWorkRich, 'popularity' | 'ratings'>;
 export const BookStatistics = ({popularity, ratings}: Props) => {
   return (
-    <div className="flex flex-col-reverse gap-y-2">
+    <div className="flex flex-col-reverse gap-y-1">
       {ratings && (
         <>
           <div className="flex gap-x-1 items-end">
@@ -27,15 +27,15 @@ export const BookStatistics = ({popularity, ratings}: Props) => {
             <span className="font-wotfardMd">
               {popularity?.currently_reading}
             </span>
-            <ViewingIcon />
+            <ViewingIcon width={16} height={16} />
           </div>
           <div className="flex gap-x-1 items-center">
             <span className="font-wotfardMd">{popularity?.already_read}</span>
-            <BookOpenIcon />
+            <BookOpenIcon width={16} height={16} />
           </div>
           <div className="flex gap-x-1 items-center">
             <span className="font-wotfardMd">{popularity?.want_to_read}</span>
-            <BookmarkIcon />
+            <BookmarkIcon width={16} height={16} />
           </div>
         </div>
       )}

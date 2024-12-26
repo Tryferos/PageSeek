@@ -33,7 +33,7 @@ export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
     if (!_description) return undefined;
 
     const words = _description.split(' ');
-    const maxWords = 35;
+    const maxWords = 30;
     return (
       words
         .slice(0, words.length > maxWords ? maxWords : words.length)
@@ -47,7 +47,8 @@ export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
       <li
         ref={ref}
         onMouseMove={onMouseMove}
-        className="px-4 hover:scale-102 hover:translate-x-1 cursor-pointer transition-all py-3 bg-gradient-to-tr from-orange-600 to-orange-400 rounded min-w-[275px] w-[25%] h-[28vh] relative text-gray-100 border-[3px] border-orange-700">
+        className="px-3 shadow-book-box authorbook hover:shadow-book-box-hover hover:-translate-x-1 hover:-translate-y-1 cursor-pointer py-2 rounded-tl-md min-w-[275px] w-[25%] h-[28vh] relative text-gray-100  overflow-hidden">
+        <div className="absolute -top-3 -left-3 size-6 bg-orange-700 rotate-45"></div>
         <div className="flex flex-col gap-y-1">
           <p className="font-wotfardMd text-white">{title ?? _title}</p>
           {description && <p className="text-sm">{description}</p>}

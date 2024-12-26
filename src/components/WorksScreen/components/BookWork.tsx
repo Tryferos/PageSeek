@@ -28,9 +28,9 @@ export const BookWork = ({
     <div className="w-full h-full font-wotfardRg flex flex-col gap-y-3">
       <div className="flex gap-x-4">
         <BookImage thumbnail={thumbnail} title={title} bookKey={_key} />
-        <div className="flex flex-col justify-between w-[80%]">
+        <div className="flex flex-col justify-between w-[80%] gap-y-2">
           <div className="flex flex-col gap-y-4">
-            <p className="text-2xl font-wotfardSb bg-gradient-to-br w-[100%] from-orange-800 to-orange-400 via-orange-500 bg-clip-text text-transparent">
+            <p className="text-2xl texteffect font-wotfardSb w-[100%]">
               {title}
             </p>
             <div className="flex flex-col gap-y-2">
@@ -42,7 +42,7 @@ export const BookWork = ({
               <BookLinks links={links} />
             </div>
           </div>
-          <div className=" flex flex-col gap-y-2">
+          <div className="flex flex-col gap-y-1">
             <BookStatistics popularity={popularity} ratings={ratings} />
             {first_publish_date && (
               <p className="text-sm text-secondary">

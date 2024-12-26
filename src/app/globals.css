@@ -110,6 +110,46 @@ canvas {
   background: linear-gradient(to right bottom, #c2410c, #f97316);
 }
 
+.texteffect {
+  background: linear-gradient(to right top, #fb923c 20%, #c2410c 60%);
+  background-size: 300% 100%;
+  background-clip: text;
+  color: transparent;
+  cursor: default;
+  background-position: 50% 50%;
+  transition: background-position 0.5s ease;
+}
+
+.texteffect:hover {
+  background-position: 85% 50%;
+}
+
+.authorbook {
+  background: linear-gradient(to right top, #ea580c 40%, #fb923c 70%);
+  background-size: 300% 100%;
+  background-position: 50% 50%;
+  transition:
+    background-position 0.5s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.authorbook:hover {
+  background-position: 100% 50%;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .bookeffect::before {
   background: radial-gradient(#fed7aa, transparent, transparent);
   content: '';

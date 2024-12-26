@@ -15,7 +15,7 @@ export const AuthorBookWorks = async ({id, name}: Props) => {
         <p className="font-wotfardMd text-lg">
           {name} is renowned for more than {works.entries.length} works
         </p>
-        <ul className="flex gap-x-4 overflow-x-auto py-2 scrollbar pb-4">
+        <ul className="flex px-2 gap-x-4 overflow-x-auto py-2 scrollbar pb-4">
           {works.entries
             .sort(
               (a, b) =>
