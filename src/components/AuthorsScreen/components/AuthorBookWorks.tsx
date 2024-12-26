@@ -13,12 +13,11 @@ export const AuthorBookWorks = async ({id, name}: Props) => {
       !!entry.book.first_publish_date ||
       !!entry.book.ratings?.average,
   );
-  console.log(works?.entries);
   if (
     (!bookWorks || bookWorks.length < 1) &&
     (!works || works.entries.length < 1)
   ) {
-    return <div>No works found</div>;
+    return null;
   } else {
     return (
       <div className="py-2">
