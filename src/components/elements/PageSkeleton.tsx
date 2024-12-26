@@ -24,9 +24,9 @@ export default function PageSkeleton() {
           <div className="bg-gray-300 w-[20%] h-full animate-pulse rounded-xl"></div>
         </div>
         <div className="flex gap-y-1 h-[20%] w-full flex-col">
-          <div className="bg-gray-300 w-[calc(80%+8*4px)] h-[26px] animate-pulse rounded-xl"></div>
-          <div className="bg-gray-300 w-[calc(80%+8*4px)] h-[20px] animate-pulse rounded-xl"></div>
-          <div className="bg-gray-300 w-[calc(80%+8*4px)] h-[20px] animate-pulse rounded-xl"></div>
+          <div className="bg-gray-300 w-[calc(80%+24px)] h-[36px] animate-pulse rounded-xl"></div>
+          <div className="bg-gray-300 w-[calc(80%+24px)] h-[32px] animate-pulse rounded-xl"></div>
+          <div className="bg-gray-300 w-[calc(80%+24px)] h-[32px] animate-pulse rounded-xl"></div>
         </div>
       </div>
     </section>

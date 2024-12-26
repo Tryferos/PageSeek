@@ -4,6 +4,7 @@ import {Author, Link} from '@/types/author';
 import {Suspense, useMemo} from 'react';
 import {AuthorBookWorks} from './AuthorBookWorks';
 import {BookEffect} from '@/components/WorksScreen/components/BookEffect';
+import {AuthorBooksSkeleton} from './AuthorBooksSkeleton';
 
 type Props = Author;
 export const AuthorInfo = ({
@@ -87,7 +88,7 @@ export const AuthorInfo = ({
       </div>
       <BookEffect />
       {_key && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<AuthorBooksSkeleton />}>
           <AuthorBookWorks id={_key} name={name} />
         </Suspense>
       )}
