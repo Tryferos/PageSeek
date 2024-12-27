@@ -20,7 +20,7 @@ export const NoResultsFound = () => {
           returned no results.
         </p>
       </div>
-      <figure className="relative w-full h-[40vh] mt-20">
+      <figure className="relative w-full h-[35vh] mt-20">
         <Image src={'/not_found.svg'} alt="Welcome to Books" fill />
       </figure>
       <footer className="w-[calc(100%+96px)] -ml-12 h-[140px] flex justify-center items-center relative">
