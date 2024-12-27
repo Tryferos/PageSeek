@@ -8,6 +8,7 @@ import {useLoading} from '@/slices/loading';
 import {ResultPagination} from './ResultPagination';
 import {usePagination} from '@/slices/pagination';
 import {useImageStore} from '@/slices/image_store';
+import {Welcome} from './Welcome';
 
 export const SearchResults = () => {
   const {getPageResult} = useSearchResult();
@@ -47,8 +48,10 @@ export const SearchResults = () => {
         <ResultPagination perPage={9} totalResults={pageResult.numFound} />
       </div>
     );
-  } else {
+  } else if (pageResult?.numFound === 0) {
     return <div>No results</div>;
+  } else {
+    return <Welcome />;
   }
 };
 
