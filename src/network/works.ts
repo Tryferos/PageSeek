@@ -37,6 +37,7 @@ export const getBookWork = async ({
       _key: res.key,
       thumbnail: thumbnail,
       author_photo: Endpoints.AuthorImage.generate(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (res as any).authors[0]?.author?.key.replace('/authors/', '') ?? '',
       ),
     };

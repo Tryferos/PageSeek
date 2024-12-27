@@ -15,7 +15,7 @@ type Actions = {
   removeAlert: () => void;
 };
 
-export const useAlerts = create<State & Actions>()((set, get, store) => ({
+export const useAlerts = create<State & Actions>()(set => ({
   alert: null,
   showAlert: (
     alert: Partial<Pick<Alert, 'duration'>> & Pick<Alert, 'type' | 'message'>,

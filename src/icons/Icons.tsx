@@ -71,7 +71,7 @@ export const ClockIcon: FC<Props> = ({width = 14, height = 14}) => {
   );
 };
 
-export const PersonIcon: FC<Props> = ({width = 14, height = 14, onClick}) => {
+export const PersonIcon: FC<Props> = ({width = 14, height = 14}) => {
   return (
     <svg
       width={width}

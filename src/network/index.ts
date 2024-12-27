@@ -2,6 +2,7 @@
 
 type GetRequestProps<T, K> = {
   url: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formatData?: (data: any) => T;
   params?: K;
   method?: 'POST' | 'PUT' | 'DELETE';
@@ -65,6 +66,7 @@ class Network {
         return formatData(data);
       }
       return data as T;
+      //@typescript-eslint/no-unused-vars
     } catch (err) {
       return null;
     } finally {
@@ -106,6 +108,7 @@ class Network {
         return formatData(data);
       }
       return data as T;
+      //@typescript-eslint/no-unused-vars
     } catch (err) {
       return null;
     } finally {

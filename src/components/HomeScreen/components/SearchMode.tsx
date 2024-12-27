@@ -4,8 +4,7 @@ import {FC} from 'react';
 import {SearchBar} from '../../elements/SearchBar';
 import {useSearch} from '@/slices/search';
 import {useSearchHandler} from '@/hooks/useSearchHandler';
-type Props = {};
-export const SearchMode: FC<Props> = () => {
+export const SearchMode = () => {
   const {query, setQuery} = useSearch();
   const {searchBooks} = useSearchHandler();
 

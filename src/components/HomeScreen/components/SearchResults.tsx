@@ -14,7 +14,7 @@ export const SearchResults = () => {
   const {loading} = useLoading();
   const {currentPage} = usePagination();
   const pageResult = getPageResult(currentPage);
-  const {addImage, images} = useImageStore();
+  const {addImage} = useImageStore();
 
   useEffect(() => {
     if (pageResult?.docs) {

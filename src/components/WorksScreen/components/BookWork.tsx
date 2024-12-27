@@ -11,7 +11,6 @@ export const BookWork = ({
   author_photo,
   title,
   _key,
-  cover_edition,
   authors,
   description,
   popularity,

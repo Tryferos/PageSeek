@@ -14,7 +14,7 @@ type Actions = {
 
 const PAGE_SIZE = 9;
 
-export const useSearchResult = create<State & Actions>()((set, get, store) => ({
+export const useSearchResult = create<State & Actions>()((set, get) => ({
   result: null,
   previousResults: [],
   lastPageFetched: 0,
