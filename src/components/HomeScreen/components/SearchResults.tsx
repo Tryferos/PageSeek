@@ -9,6 +9,7 @@ import {ResultPagination} from './ResultPagination';
 import {usePagination} from '@/slices/pagination';
 import {useImageStore} from '@/slices/image_store';
 import {Welcome} from './Welcome';
+import {NoResultsFound} from './NoResultsFound';
 
 export const SearchResults = () => {
   const {getPageResult} = useSearchResult();
@@ -49,7 +50,7 @@ export const SearchResults = () => {
       </div>
     );
   } else if (pageResult?.numFound === 0) {
-    return <div>No results</div>;
+    return <NoResultsFound />;
   } else {
     return <Welcome />;
   }
