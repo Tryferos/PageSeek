@@ -1,5 +1,4 @@
 import {SearchMode} from './components/SearchMode';
-import {SearchBar} from '../elements/SearchBar';
 import {SearchResults} from './components/SearchResults';
 
 export default function HomeScreen() {

@@ -20,17 +20,17 @@ export const useAlerts = create<State & Actions>()((set, get, store) => ({
   showAlert: (
     alert: Partial<Pick<Alert, 'duration'>> & Pick<Alert, 'type' | 'message'>,
   ) => {
-    set(state => ({
+    set({
       alert: {
         ...alert,
         duration: alert.duration ?? 3000,
       },
-    }));
+    });
   },
   removeAlert: () => {
-    set(state => ({
+    set({
       alert: null,
-    }));
+    });
   },
 }));
 

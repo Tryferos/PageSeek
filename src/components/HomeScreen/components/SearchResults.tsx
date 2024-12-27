@@ -1,17 +1,14 @@
 'use client';
 
-import {QueryBooks} from '@/network/search';
-import {useSearch} from '@/slices/search';
-import {BookQueryResult} from '@/types/search_books';
-import {Suspense, useDeferredValue, useEffect, useMemo, useState} from 'react';
+import {useEffect} from 'react';
 import {BookBlunt} from './BookBlunt';
 import {BookResultShimmer} from '../Shimmers/BookResultShimmer';
 import {useSearchResult} from '@/slices/search_result';
 import {useLoading} from '@/slices/loading';
 import {ResultPagination} from './ResultPagination';
 import {usePagination} from '@/slices/pagination';
-import Link from 'next/link';
 import {useImageStore} from '@/slices/image_store';
+
 export const SearchResults = () => {
   const {getPageResult} = useSearchResult();
   const {loading} = useLoading();

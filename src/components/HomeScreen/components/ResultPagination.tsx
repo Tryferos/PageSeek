@@ -2,7 +2,6 @@ import {useSearchHandler} from '@/hooks/useSearchHandler';
 import {BackIcon} from '@/icons/Icons';
 import {useLoading} from '@/slices/loading';
 import {usePagination} from '@/slices/pagination';
-import {useSearchResult} from '@/slices/search_result';
 import {useDeferredValue, useEffect} from 'react';
 
 type Props = {
@@ -29,7 +28,7 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
     }
   };
   return (
-    <div className="flex justify-between gap-y-2 select-none">
+    <div className="flex justify-between gap-y-2 select-none px-2">
       <div className="w-[175px]">
         <div
           onClick={onBack}

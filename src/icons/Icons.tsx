@@ -6,11 +6,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export const PaperClipIcon: FC<Props> = ({
-  width = 16,
-  height = 16,
-  onClick,
-}) => {
+export const PaperClipIcon: FC<Props> = ({width = 16, height = 16}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +26,7 @@ export const PaperClipIcon: FC<Props> = ({
   );
 };
 
-export const LocationIcon: FC<Props> = ({width = 14, height = 14, onClick}) => {
+export const LocationIcon: FC<Props> = ({width = 14, height = 14}) => {
   return (
     <svg
       width={width}
@@ -55,7 +51,7 @@ export const LocationIcon: FC<Props> = ({width = 14, height = 14, onClick}) => {
   );
 };
 
-export const ClockIcon: FC<Props> = ({width = 14, height = 14, onClick}) => {
+export const ClockIcon: FC<Props> = ({width = 14, height = 14}) => {
   return (
     <svg
       width={width}
@@ -151,7 +147,7 @@ export const StarIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
   );
 };
 
-export const ViewingIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
+export const ViewingIcon: FC<Props> = ({width = 16, height = 16}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +172,7 @@ export const ViewingIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
   );
 };
 
-export const BookOpenIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
+export const BookOpenIcon: FC<Props> = ({width = 16, height = 16}) => {
   return (
     <svg
       width={width}
@@ -196,7 +192,7 @@ export const BookOpenIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
   );
 };
 
-export const BookmarkIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
+export const BookmarkIcon: FC<Props> = ({width = 16, height = 16}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,7 @@
 import {BookMetadata} from '@/types/search_inside_book';
 import Network from '.';
 import {Endpoints} from '@/constants/endpoints';
-import {BookDocument, BookDocumentBlunt} from '@/types/search_books';
+import {BookDocument} from '@/types/search_books';
 
 export const BookMetadataImage = async (ia: string) => {
   const res = await Network.get<BookMetadata>({

@@ -4,6 +4,7 @@ import Network from '.';
 import {Endpoints} from '@/constants/endpoints';
 import {fillDocumentsWithMetadata} from './metadata';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FIELDS_RICH =
   'key,title,author_name,editions,first_sentence,first_publish_year,title_sort,title_suggest,subject,place,time,person,ratings_average,ratings_count,ratings_count_1,ratings_count_2,ratings_count_3,ratings_count_4,ratings_count_5,ia,isbn';
 

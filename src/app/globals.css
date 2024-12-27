@@ -99,7 +99,7 @@ canvas {
 }
 
 .searchresultseffect::before {
-  background: radial-gradient(#f59e0b, transparent, transparent);
+  background: radial-gradient(#fdba74, transparent, transparent);
   content: '';
   position: absolute;
   width: 100%;

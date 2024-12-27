@@ -19,8 +19,6 @@ export const BookBlunt = ({book}: Props) => {
     first_publish_year,
     ratings_average,
     isbn,
-    editions,
-    author_image,
   } = book;
   const ref = useRef<HTMLAnchorElement>(null);
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {

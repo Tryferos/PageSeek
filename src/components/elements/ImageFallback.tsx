@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import {DetailedHTMLProps, ImgHTMLAttributes, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 type Props = {
   src: string;
   fallbackSrc: string;

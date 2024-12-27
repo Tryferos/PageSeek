@@ -10,7 +10,7 @@ type State = {
   previousPage: () => void;
 };
 
-export const usePagination = create<State>()((set, get, store) => ({
+export const usePagination = create<State>()(set => ({
   currentPage: 1,
   totalPages: 1,
   reset: () => set({currentPage: 1, totalPages: 1}),

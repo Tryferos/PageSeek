@@ -2,7 +2,6 @@
 import {StarIcon} from '@/icons/Icons';
 import {AuthorWorksRichEntry} from '@/types/author';
 import {useMemo, useRef} from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
@@ -16,19 +15,7 @@ export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
     }
   };
 
-  const {
-    cover_edition,
-    description: _description,
-    links,
-    title,
-    author_photo,
-    thumbnail,
-    authors,
-    ratings,
-    popularity,
-    _key,
-    first_publish_date,
-  } = book;
+  const {description: _description, title, ratings, first_publish_date} = book;
   const description = useMemo(() => {
     if (!_description) return undefined;
 

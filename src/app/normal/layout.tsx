@@ -1,5 +1,4 @@
 import type {Metadata} from 'next';
-import {FontFamilies} from '@/constants/types';
 import {GlobalLoader} from '@/components/elements/GlobalLoader';
 
 export const metadata: Metadata = {

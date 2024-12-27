@@ -1,5 +1,3 @@
-import {QueryBooks} from '@/network/search';
-import {BookQueryResult} from '@/types/search_books';
 import {create} from 'zustand';
 type State = {
   query: string | null;
@@ -8,7 +6,7 @@ type State = {
   setQuery: (q: string) => void;
   clearQuery: () => void;
 };
-export const useSearch = create<State>()((set, get, store) => ({
+export const useSearch = create<State>()((set, get) => ({
   query: null,
   previousQuery: null,
   isQueryValid: false,

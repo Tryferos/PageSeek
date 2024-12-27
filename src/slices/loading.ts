@@ -5,7 +5,7 @@ type State = {
   setLoading: (l: boolean) => void;
 };
 
-export const useLoading = create<State>()((set, get, store) => ({
+export const useLoading = create<State>()(set => ({
   loading: false,
   setLoading: (l: boolean) => set({loading: l}),
 }));

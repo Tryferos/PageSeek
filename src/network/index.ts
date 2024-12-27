@@ -1,5 +1,4 @@
 'use server';
-import {useSearch} from '@/slices/search';
 
 type GetRequestProps<T, K> = {
   url: string;
