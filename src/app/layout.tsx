@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import {FontFamilies} from '@/constants/types';
 import {GlobalLoader} from '@/components/elements/GlobalLoader';
+import {GlobalAlerts} from '@/components/elements/GlobalAlerts';
 
 export const metadata: Metadata = {
   title: '3D Version',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <main className="w-[100%] min-h-[100%] py-10 px-12 bg-gray-200 relative">
           {children}
           <GlobalLoader />
+          <GlobalAlerts />
         </main>
       </body>
     </html>
