@@ -17,6 +17,7 @@ const config: Config = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         secondary: '#334155',
+        tertiary: '#6c63ff',
       },
       backgroundColor: {
         error: '#ef4444',

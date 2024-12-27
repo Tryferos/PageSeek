@@ -8,7 +8,7 @@ export const GlobalLoader = () => {
   } else {
     return (
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-90 pointer-events-none">
-        <div className="size-16 border-[6px] border-sky-600 border-t-[transparent] rounded-[50%] animate-spin"></div>
+        <div className="size-16 border-[6px] border-tertiary border-t-[transparent] rounded-[50%] animate-spin"></div>
       </div>
     );
   }
