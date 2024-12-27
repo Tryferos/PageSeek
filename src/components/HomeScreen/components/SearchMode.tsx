@@ -1,6 +1,5 @@
 'use client';
 
-import {FC} from 'react';
 import {SearchBar} from '../../elements/SearchBar';
 import {useSearch} from '@/slices/search';
 import {useSearchHandler} from '@/hooks/useSearchHandler';

@@ -21,10 +21,7 @@ class Network {
     return {};
   };
 
-  private static createUrl<K extends KeyType = KeyType>(
-    url: string,
-    params?: K,
-  ): string {
+  private static createUrl<K extends KeyType = KeyType>(params?: K): string {
     if (params) {
       return `?${Object.keys(params)
         .map(key => `${key}=${params[key]}`)
@@ -40,7 +37,7 @@ class Network {
     params,
     useMinimumResponseTime,
   }: GetRequestProps<T, K>): Promise<T | null> {
-    const urlToCall = `${url}${this.createUrl<K>(url, params)}`;
+    const urlToCall = `${url}${this.createUrl<K>(params)}`;
     try {
       const currentMS1 = new Date().getTime();
       const response = await fetch(urlToCall, {
@@ -81,7 +78,7 @@ class Network {
     method = 'POST',
     useMinimumResponseTime,
   }: PostRequestProps<T, K>): Promise<T | null> {
-    const urlToCall = `${url}${this.createUrl<K>(url, params)}`;
+    const urlToCall = `${url}${this.createUrl<K>(params)}`;
     try {
       const currentMS1 = new Date().getTime();
       const response = await fetch(urlToCall, {
@@ -108,8 +105,8 @@ class Network {
         return formatData(data);
       }
       return data as T;
-      //@typescript-eslint/no-unused-vars
     } catch (err) {
+      //@typescript-eslint/no-unused-vars
       return null;
     } finally {
     }
