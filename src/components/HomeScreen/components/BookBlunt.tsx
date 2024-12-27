@@ -36,7 +36,7 @@ export const BookBlunt = ({book}: Props) => {
     <Link
       onMouseMove={onMouseMove}
       ref={ref}
-      className=" hover:scale-102 transition-transform min-h-[30%] max-h-[35%] flex flex-col gap-4 min-w-[350px] relative overflow-hidden searchresultseffect bg-orange-50 rounded"
+      className="hover:scale-102 transition-transform min-h-[30%] max-h-[35%] grow basis-auto box-border flex-col gap-4 min-w-[340px] relative overflow-hidden searchresultseffect bg-orange-50 rounded"
       href={`${book.key}`}>
       <li key={book.key} className="w-full h-full">
         <div className="w-full h-full flex gap-x-4 cursor-pointer py-4 px-4 relative">
