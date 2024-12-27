@@ -18,6 +18,11 @@ const config: Config = {
         foreground: 'var(--foreground)',
         secondary: '#334155',
       },
+      backgroundColor: {
+        error: '#ef4444',
+        success: '#22c55e',
+        warning: '#f59e0b',
+      },
       scale: {
         101: '1.01',
         102: '1.02',
