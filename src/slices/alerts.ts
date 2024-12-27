@@ -11,15 +11,15 @@ type State = {
 };
 
 type Actions = {
-  showAlert: (alert: Alert) => void;
+  showAlert: (
+    alert: Partial<Pick<Alert, 'duration'>> & Pick<Alert, 'type' | 'message'>,
+  ) => void;
   removeAlert: () => void;
 };
 
 export const useAlerts = create<State & Actions>()(set => ({
   alert: null,
-  showAlert: (
-    alert: Partial<Pick<Alert, 'duration'>> & Pick<Alert, 'type' | 'message'>,
-  ) => {
+  showAlert: alert => {
     set({
       alert: {
         ...alert,
