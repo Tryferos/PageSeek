@@ -3,7 +3,7 @@ import {BackIcon} from '@/icons/Icons';
 import {useLoading} from '@/slices/loading';
 import {usePagination} from '@/slices/pagination';
 import {useSearchResult} from '@/slices/search_result';
-import {useEffect} from 'react';
+import {useDeferredValue, useEffect} from 'react';
 
 type Props = {
   perPage: number;
@@ -12,6 +12,7 @@ type Props = {
 
 export const ResultPagination = ({perPage, totalResults}: Props) => {
   const {currentPage, nextPage, previousPage} = usePagination();
+  const deferredPage = useDeferredValue(currentPage);
   const {loading} = useLoading();
   const {paginateBooks} = useSearchHandler();
   useEffect(() => {
@@ -28,7 +29,7 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
     }
   };
   return (
-    <div className="flex justify-between gap-y-2">
+    <div className="flex justify-between gap-y-2 select-none">
       <div className="w-[175px]">
         <div
           onClick={onBack}
@@ -41,17 +42,20 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
       </div>
       <div className="flex gap-x-4 justify-center flex-col items-center">
         <p className="text-xs">
-          Showing <span className="font-wotfardMd">{perPage}</span> of{' '}
-          <span className="font-wotfardMd">{totalResults}</span> results
+          Showing{' '}
+          <span className="font-wotfardMd">
+            {perPage * (deferredPage - 1)}-{perPage * deferredPage}
+          </span>{' '}
+          of <span className="font-wotfardMd">{totalResults}</span> results
         </p>
         <p className="text-sm">
-          Page <span className="font-wotfardMd">{currentPage}</span> of{' '}
+          Page <span className="font-wotfardMd">{deferredPage}</span> of{' '}
           <span className="font-wotfardMd">
             {Math.ceil(totalResults / perPage)}
           </span>
         </p>
       </div>
-      <div className="w-[175px]">
+      <div className="w-[175px] justify-end flex">
         <div
           onClick={onNext}
           className={`bg-gradient-to-tr backgroundeffect w-[130px] from-orange-700 to-orange-500 text-white font-wotfardMd px-4 py-2 rounded-md cursor-pointer flex items-center justify-end ${loading ? 'opacity-50 cursor-wait' : 'group'}`}>
