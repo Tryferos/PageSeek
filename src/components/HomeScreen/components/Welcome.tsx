@@ -14,7 +14,12 @@ export const Welcome = () => {
         </p>
       </div>
       <figure className="relative w-full h-[35vh] mt-20">
-        <Image src={'/books-welcome.svg'} alt="Welcome to Books" fill />
+        <Image
+          priority
+          src={'/books-welcome.svg'}
+          alt="Welcome to Books"
+          fill
+        />
       </figure>
       <footer className="w-[calc(100%+96px)] -ml-12 h-[140px] flex justify-center items-center relative">
         <Image

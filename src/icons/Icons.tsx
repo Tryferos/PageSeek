@@ -4,6 +4,121 @@ type Props = {
   width?: number | string;
   height?: number | string;
   onClick?: () => void;
+  color?: string;
+};
+
+export const StarsIcon: FC<Props> = ({width = 16, height = 16}) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+      />
+    </svg>
+  );
+};
+
+export const StatisticsIcon: FC<Props> = ({width = 16, height = 16}) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"
+      />
+    </svg>
+  );
+};
+
+export const UpwardsIcon: FC<Props> = ({width = 16, height = 16}) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+      />
+    </svg>
+  );
+};
+
+export const DownwardsIcon: FC<Props> = ({width = 16, height = 16}) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181"
+      />
+    </svg>
+  );
+};
+
+export const IdentificationIcon: FC<Props> = ({width = 16, height = 16}) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z"
+      />
+    </svg>
+  );
+};
+
+export const InfoIcon: FC<Props> = ({width = 16, height = 16}) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+      />
+    </svg>
+  );
 };
 
 export const ImageIcon: FC<Props> = ({width = 16, height = 16}) => {
@@ -79,8 +194,7 @@ export const ClockIcon: FC<Props> = ({width = 14, height = 14}) => {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={2}
-      stroke="currentColor"
-      className="size-6">
+      stroke="currentColor">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -99,8 +213,7 @@ export const PersonIcon: FC<Props> = ({width = 14, height = 14}) => {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={2}
-      stroke="currentColor"
-      className="size-6">
+      stroke="currentColor">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -135,7 +248,7 @@ export const SearchIcon: FC<Props> = ({width = 20, height = 20, onClick}) => {
   return (
     <svg
       onClick={onClick}
-      className="cursor-pointer"
+      className="cursor-pointer fill-gray-300"
       width={width}
       height={height}
       xmlns="http://www.w3.org/2000/svg"

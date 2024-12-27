@@ -20,7 +20,7 @@ export type BookDocument = {
   ratings_count_3?: number;
   ratings_count_4?: number;
   ratings_count_5?: number;
-  editions: BookQueryResult;
+  editions?: BookQueryResult;
   //* archive.org item ID
   ia?: Array<string>; //* https://archive.org/metadata/ia[0]
   //* ISBN
