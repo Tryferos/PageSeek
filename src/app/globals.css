@@ -98,6 +98,40 @@ canvas {
   pointer-events: auto;
 }
 
+.searchresultseffect::before {
+  background: radial-gradient(#f59e0b, transparent, transparent);
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  top: var(--y);
+  left: var(--x);
+  transition:
+    0.5s,
+    top 0s,
+    left 0s;
+}
+
+.searchresultseffect::after {
+  border-radius: 4px;
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: white;
+  opacity: 0.15;
+  transition: opacity 0.2s ease;
+}
+
+.searchresultseffect:hover::after {
+  opacity: 0.4;
+}
+
+.searchresultseffect:hover::before {
+  opacity: 1;
+}
+
 .bookeffect {
   position: relative;
   height: 3.5vh;

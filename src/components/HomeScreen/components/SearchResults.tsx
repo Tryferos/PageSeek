@@ -41,16 +41,10 @@ export const SearchResults = () => {
 
   if (pageResult && pageResult?.docs.length > 0) {
     return (
-      <div className="w-full h-full flex flex-col gap-y-4">
+      <div className="w-full h-full flex flex-col gap-y-2">
         <ListWrapper>
           {pageResult.docs.slice(0, 9).map(book => (
-            <li
-              key={book.key}
-              className="basis-[30%] min-h-[30%] max-h-[35%] flex flex-col gap-4 min-w-[350px]">
-              <Link className="w-full h-full" href={`${book.key}`}>
-                <BookBlunt book={book} />
-              </Link>
-            </li>
+            <BookBlunt book={book} key={book.key} />
           ))}
         </ListWrapper>
         <ResultPagination perPage={9} totalResults={pageResult.numFound} />
@@ -63,7 +57,7 @@ export const SearchResults = () => {
 
 const ListWrapper = ({children}: {children: React.ReactNode}) => {
   return (
-    <ul className="flex flex-wrap gap-x-4 gap-y-4 h-[100%] justify-start overflow-hidden ">
+    <ul className="flex flex-wrap gap-x-2 gap-y-2 min-h-[100%] justify-start overflow-hidden p-2 overflow-y-auto scrollbar">
       {children}
     </ul>
   );
