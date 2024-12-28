@@ -12,3 +12,11 @@ export const SortTypes = Object.freeze({
   ['want_to_read']: 'Famous',
   ['title']: 'Title',
 });
+
+export const Subjects = Object.freeze({
+  Biography: 'Biography',
+  Fiction: 'Fiction',
+  Nonfiction: 'Nonfiction',
+  Adventure: 'Adventure',
+  Love: 'Love',
+});

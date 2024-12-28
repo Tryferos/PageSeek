@@ -42,7 +42,7 @@ export const Endpoints: Readonly<{
   },
   SubjectsKey: {
     generate: (key: SubjectKey) =>
-      `https://openlibrary.org/subjects/${key}.json`,
+      `https://openlibrary.org/subjects/${key.toLowerCase()}.json`,
   },
   AuthorImage: {
     generate: (key: string) =>

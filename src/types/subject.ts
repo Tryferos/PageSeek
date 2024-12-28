@@ -1,3 +1,4 @@
+import {Subjects} from '@/constants/search';
 import {BookDocument, KeyReferences} from './search_books';
 
 type SubjectBookDocument = Pick<
@@ -7,7 +8,7 @@ type SubjectBookDocument = Pick<
   authors?: KeyReferences;
 };
 
-export type SubjectKey = 'biography' | 'fiction' | 'nonfiction' | 'adventure';
+export type SubjectKey = keyof typeof Subjects;
 
 /*
  * /subjects/${key}.json

@@ -1,5 +1,3 @@
-'use server';
-
 type GetRequestProps<T, K> = {
   url: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

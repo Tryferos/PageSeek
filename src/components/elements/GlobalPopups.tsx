@@ -19,7 +19,7 @@ export const GlobalPopups = () => {
     const childrenWrapper = document.getElementById('children-wrapper');
     if (childrenWrapper) {
       if (popup) {
-        childrenWrapper.style.filter = 'blur(4px)';
+        childrenWrapper.style.filter = 'blur(2px)';
       } else {
         childrenWrapper.style.filter = 'blur(0px)';
       }

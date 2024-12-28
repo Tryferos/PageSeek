@@ -8,7 +8,7 @@ import {
 } from '@/icons/Icons';
 import {usePopups} from '@/slices/popups_store';
 import {useSearchType} from '@/slices/search_type_store';
-import {useEffect} from 'react';
+import {useCallback, useEffect} from 'react';
 
 export const SearchTypeSelector = () => {
   const {searchType, setSearchType} = useSearchType();
@@ -27,10 +27,15 @@ export const SearchTypeSelector = () => {
     }
   };
   useEffect(() => {
+    openSubjectsPopup();
+  }, [searchType]);
+
+  const openSubjectsPopup = useCallback(() => {
     if (searchType === 'subject') {
-      showPopup('Subjects', 'Subjects');
+      showPopup('Subjects', 'Browse book subjects');
     }
   }, [searchType]);
+
   return (
     <div className="basis-[50%] min-w-[325px] select-none my-0 rounded-none rounded-tl-md mx-10 flex justify-between px-0 shadow-book-box hover:shadow-book-box-hover hover:scale-102 transition-all">
       {Object.keys(SearchTypes).map(key => {
@@ -38,7 +43,12 @@ export const SearchTypeSelector = () => {
         const title = SearchTypes[_key];
         return (
           <div
-            onClick={() => setSearchType(_key)}
+            onClick={() => {
+              if (_key === 'subject') {
+                openSubjectsPopup();
+              }
+              setSearchType(_key);
+            }}
             className={`${searchType === key ? 'bg-gradient-to-tr from-orange-700 to-orange-400 via-orange-500 gap-x-1' : 'border-r-[1px] border-l-[1px] hover:bg-gradient-to-tr hover:from-orange-700 hover:to-orange-400 hover:via-orange-500'} 
             cursor-pointer first:rounded-tl-md items-center flex justify-center w-full first:border-l-[0px] last:border-r-[0px] border-gray-200 group`}
             key={key}>

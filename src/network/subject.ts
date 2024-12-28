@@ -1,7 +1,7 @@
 import {Endpoints} from '@/constants/endpoints';
 import {SubjectKey, WorksBySubject} from '@/types/subject';
-import Network from '.';
 import {fillDocumentsWithMetadata} from './metadata';
+import Network from './index';
 
 type Props = {
   key: SubjectKey;
@@ -20,7 +20,8 @@ export const getWorksBySubject = async ({
     params: {
       limit,
       offset,
-      published_in: published_in?.join('-'),
+      ebooks: true,
+      published_in: published_in.join('-'),
     },
   });
   if (res) {

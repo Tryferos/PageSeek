@@ -35,9 +35,40 @@ export const useSearchHandler = () => {
         setTotalPages((res?.numFound ?? PAGE_SIZE) / PAGE_SIZE);
         //* Set Result
         setResult(res, 1);
-        setPreviousSortingType(sortingType);
-        setLoading(false);
+      } else {
+        const res = await getWorksBySubject({
+          key: query as SubjectKey,
+          limit: PAGE_SIZE,
+          offset: 0,
+          published_in: ['2000', '2024'],
+        });
+        setCurrentPage(1);
+        setTotalPages((res?.work_count ?? PAGE_SIZE) / PAGE_SIZE);
+        //* Set Result
+        setResult(
+          {
+            q: query,
+            docs:
+              res?.works.map(
+                item =>
+                  ({
+                    author_name: [item.authors?.[0].name],
+                    first_publish_year: item.first_publish_year,
+                    editions: undefined,
+                    key: item.key,
+                    thumbnail: item.thumbnail,
+                    title: item.title,
+                  }) as BookDocumentBlunt,
+              ) ?? [],
+            numFound: res?.work_count ?? 0,
+            numFoundExact: true,
+            start: 0,
+          },
+          1,
+        );
       }
+      setPreviousSortingType(sortingType);
+      setLoading(false);
     }
   };
 
@@ -73,6 +104,7 @@ export const useSearchHandler = () => {
           key: query as SubjectKey,
           limit: PAGE_SIZE,
           offset: (currentPage - 1) * PAGE_SIZE,
+          published_in: ['2000', '2024'],
         });
         setTotalPages((res?.work_count ?? PAGE_SIZE) / PAGE_SIZE);
         setResult(
@@ -92,7 +124,7 @@ export const useSearchHandler = () => {
               ) ?? [],
             numFound: res?.work_count ?? 0,
             numFoundExact: true,
-            start: 0,
+            start: (currentPage - 1) * PAGE_SIZE,
           },
           currentPage,
         );
