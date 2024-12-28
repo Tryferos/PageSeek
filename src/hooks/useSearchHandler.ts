@@ -1,10 +1,10 @@
 import {QueryBooks} from '@/network/search';
 import {getWorksBySubject} from '@/network/subject';
-import {useLoading} from '@/slices/loading';
-import {usePagination} from '@/slices/pagination';
-import {useSearch} from '@/slices/search';
-import {useSearchResult} from '@/slices/search_result';
-import {useSearchType} from '@/slices/search_type';
+import {useLoading} from '@/slices/loading_store';
+import {usePagination} from '@/slices/pagination_store';
+import {useSearch} from '@/slices/search_store';
+import {useSearchResult} from '@/slices/search_result_store';
+import {useSearchType} from '@/slices/search_type_store';
 import {BookDocumentBlunt} from '@/types/search_books';
 import {SubjectKey} from '@/types/subject';
 
@@ -15,7 +15,8 @@ export const useSearchHandler = () => {
   const {currentPage, setCurrentPage, setTotalPages} = usePagination();
   const {isQueryValid, query} = useSearch();
   const {setResult, lastPageFetched} = useSearchResult();
-
+  const {searchType, sortingType, previousSortingType, setPreviousSortingType} =
+    useSearchType();
   const searchBooks = async () => {
     if (isQueryValid && query && !loading) {
       setLoading(true);
@@ -29,9 +30,12 @@ export const useSearchHandler = () => {
           page: 1,
           sort: sortingType,
         });
+        //* Reset Pagination
         setCurrentPage(1);
         setTotalPages((res?.numFound ?? PAGE_SIZE) / PAGE_SIZE);
+        //* Set Result
         setResult(res, 1);
+        setPreviousSortingType(sortingType);
         setLoading(false);
       }
     }
@@ -40,17 +44,30 @@ export const useSearchHandler = () => {
   const paginateBooks = async () => {
     if (query && currentPage > lastPageFetched) {
       setLoading(true);
-      const searchType = useSearchType.getState().searchType;
+      let _currentPage = currentPage;
       if (searchType !== 'subject') {
+        if (sortingType !== previousSortingType) {
+          /*
+           * Sorting Type Changed
+           * Reset Pagination and Result
+           */
+          _currentPage = 1;
+          setCurrentPage(1);
+          setTotalPages(1);
+          setResult(null, 1);
+        }
+
+        setPreviousSortingType(sortingType);
         const res = await QueryBooks({
           query: query,
           includeThumbnail: true,
           queryType: searchType,
           limit: PAGE_SIZE,
-          page: currentPage,
+          page: _currentPage,
+          sort: sortingType,
         });
         setTotalPages((res?.numFound ?? PAGE_SIZE) / PAGE_SIZE);
-        setResult(res, currentPage);
+        setResult(res, _currentPage);
       } else {
         const res = await getWorksBySubject({
           key: query as SubjectKey,
