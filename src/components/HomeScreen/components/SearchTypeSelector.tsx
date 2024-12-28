@@ -24,7 +24,7 @@ export const SearchTypeSelector = () => {
     }
   };
   return (
-    <div className="basis-[50%] min-w-[325px] my-0 rounded-none rounded-tl-md mx-10 flex justify-between px-0 shadow-book-box hover:shadow-book-box-hover hover:scale-102 transition-all">
+    <div className="basis-[50%] min-w-[325px] select-none my-0 rounded-none rounded-tl-md mx-10 flex justify-between px-0 shadow-book-box hover:shadow-book-box-hover hover:scale-102 transition-all">
       {Object.keys(SearchTypes).map(key => {
         const _key = key as keyof typeof SearchTypes;
         const title = SearchTypes[_key];
