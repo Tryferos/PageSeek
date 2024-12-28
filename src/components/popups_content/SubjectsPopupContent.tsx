@@ -2,9 +2,9 @@
 import {Subjects} from '@/constants/search';
 import {usePopups} from '@/slices/popups_store';
 import {useSearch} from '@/slices/search_store';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 
-const subjects = Object.keys(Subjects);
+const _subjects = Object.keys(Subjects);
 
 export const SubjectsPopupContent = () => {
   const {query, setQuery} = useSearch();
@@ -12,6 +12,12 @@ export const SubjectsPopupContent = () => {
   const closePopup = usePopups(s => s.closePopup);
   const keyDownRef = useRef<(e: KeyboardEvent) => void>();
   const [filter, setFilter] = useState<string>('');
+
+  const subjects = useMemo(() => {
+    return _subjects.filter(s =>
+      s.toLowerCase().includes(filter.toLowerCase()),
+    );
+  }, [filter]);
 
   useEffect(() => {
     keyDownRef.current = e => {
@@ -39,7 +45,7 @@ export const SubjectsPopupContent = () => {
         closePopup();
       }
     };
-  }, [selectedSubject]);
+  }, [selectedSubject, subjects]);
 
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => keyDownRef.current?.(e);
@@ -58,6 +64,10 @@ export const SubjectsPopupContent = () => {
 
   useEffect(() => {
     if (selectedSubject) {
+      const element = document.getElementById(selectedSubject);
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth', block: 'center'});
+      }
       setQuery(selectedSubject);
     }
   }, [selectedSubject]);
@@ -69,20 +79,19 @@ export const SubjectsPopupContent = () => {
         onChange={e => setFilter(e.target.value)}
         type="search"
         placeholder="Can't find your subject?"
-        className="w-[40%] h-full px-4 py-2 border-b-[1px] border-gray-200 focus:outline-none"
+        className="w-[40%] h-full px-4 py-2 border-b-[1px] border-gray-200 focus:outline-none focus:border-gray-400"
       />
       <ul className="w-full flex flex-col gap-y-1">
-        {subjects
-          .filter(s => s.toLowerCase().includes(filter.toLowerCase()))
-          .map(subject => (
-            <li
-              onClick={() => setSelectedSubject(subject)}
-              key={subject}
-              className={`w-full h-full cursor-pointer flex justify-center items-center gap-x-1 transition-transform 
+        {subjects.map(subject => (
+          <li
+            id={subject}
+            onClick={() => setSelectedSubject(subject)}
+            key={subject}
+            className={`w-full h-full cursor-pointer flex justify-center items-center gap-x-1 transition-transform 
             ${selectedSubject === subject ? 'bg-orange-100 scale-101 font-wotfardMd' : 'hover:scale-101 hover:font-wotfardMd'}`}>
-              <p className="text-secondary text-base">{subject}</p>
-            </li>
-          ))}
+            <p className="text-secondary text-base">{subject}</p>
+          </li>
+        ))}
       </ul>
     </div>
   );
