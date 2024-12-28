@@ -1,6 +1,6 @@
 'use client';
 
-import {SearchBar} from '../../elements/SearchBar';
+import {SearchBar} from '../../client/SearchBar';
 import {useSearch} from '@/slices/search_store';
 import {useSearchHandler} from '@/hooks/useSearchHandler';
 export const SearchMode = () => {

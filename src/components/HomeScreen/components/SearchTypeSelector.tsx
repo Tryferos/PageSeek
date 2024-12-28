@@ -6,10 +6,13 @@ import {
   PersonIcon,
   SearchIcon,
 } from '@/icons/Icons';
+import {usePopups} from '@/slices/popups_store';
 import {useSearchType} from '@/slices/search_type_store';
+import {useEffect} from 'react';
 
 export const SearchTypeSelector = () => {
   const {searchType, setSearchType} = useSearchType();
+  const showPopup = usePopups(s => s.showPopup);
   const getIcon = (searchType: keyof typeof SearchTypes) => {
     if (searchType === 'q') {
       return <SearchIcon width={16} height={16} />;
@@ -23,6 +26,11 @@ export const SearchTypeSelector = () => {
       return null;
     }
   };
+  useEffect(() => {
+    if (searchType === 'subject') {
+      showPopup('Subjects', 'Subjects');
+    }
+  }, [searchType]);
   return (
     <div className="basis-[50%] min-w-[325px] select-none my-0 rounded-none rounded-tl-md mx-10 flex justify-between px-0 shadow-book-box hover:shadow-book-box-hover hover:scale-102 transition-all">
       {Object.keys(SearchTypes).map(key => {
