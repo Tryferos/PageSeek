@@ -2,6 +2,7 @@
 import {BookQueryParams, BookQueryResult} from '@/types/search_books';
 import Network from '.';
 import {Endpoints} from '@/constants/endpoints';
+import {SortTypes} from '@/constants/search';
 import {fillDocumentsWithMetadata} from './metadata';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -17,6 +18,7 @@ type QueryProps = {
   queryType?: 'q' | 'title' | 'author';
   page?: number;
   limit?: number;
+  sort?: keyof typeof SortTypes;
 };
 
 export const QueryBooks = async ({
@@ -25,6 +27,7 @@ export const QueryBooks = async ({
   queryType = 'q',
   page = 1,
   limit = 10,
+  sort = 'want_to_read',
 }: QueryProps): Promise<BookQueryResult | null> => {
   const res = await Network.get<BookQueryResult, BookQueryParams>({
     url: Endpoints.BooksQuery.generate(),
@@ -33,10 +36,10 @@ export const QueryBooks = async ({
       limit: limit,
       fields: FIELDS_BLUNT_SEARCH,
       page: page,
-      sort: 'want_to_read',
+      sort: sort,
     },
   });
-  if (includeThumbnail && res) {
+  if (includeThumbnail && res && res.docs.length >= 1) {
     await fillDocumentsWithMetadata(res.docs);
   }
   if (res) {

@@ -13,7 +13,7 @@ type Actions = {
 
 export const useSearchType = create<State & Actions>()(set => ({
   searchType: 'q',
-  sortingType: 'new',
+  sortingType: 'want_to_read',
   setSearchType: (searchType: State['searchType']) => set({searchType}),
   setSortingType: (sortingType: State['sortingType']) => set({sortingType}),
 }));

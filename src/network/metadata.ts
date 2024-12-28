@@ -8,8 +8,14 @@ export const BookMetadataImage = async (ia: string) => {
     url: Endpoints.BookMetadata.generate(ia),
   });
   if (res) {
-    const {d1, dir, files} = res;
-    const imageUrl = `${d1}${dir}/${files[0].name}`;
+    const {d1, dir, files: _files} = res;
+    const files = _files
+      ?.filter(file => file.name.endsWith('jpg') || file.name.endsWith('png'))
+      .sort((a, b) => b.name.length - a.name.length);
+    if (!files || files.length < 1) {
+      return null;
+    }
+    const imageUrl = `${d1}${dir}/${files?.[0].name}`;
     return imageUrl;
   }
   return null;
@@ -20,8 +26,10 @@ export const fillDocumentsWithMetadata = async (
 ) => {
   for (const doc of docs) {
     if (doc.ia && doc.ia.length > 0) {
-      const res = await BookMetadataImage(doc.ia[0]);
-      doc.thumbnail = res?.includes('https') ? res : `https://${res}`;
+      const res = await BookMetadataImage(doc.ia?.[0]);
+      if (res) {
+        doc.thumbnail = res?.includes('https') ? res : `https://${res}`;
+      }
     }
   }
 };

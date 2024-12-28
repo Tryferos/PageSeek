@@ -19,17 +19,21 @@ export const useSearchHandler = () => {
   const searchBooks = async () => {
     if (isQueryValid && query && !loading) {
       setLoading(true);
-      const res = await QueryBooks({
-        query: query,
-        includeThumbnail: true,
-        queryType: 'q',
-        limit: PAGE_SIZE,
-        page: 1,
-      });
-      setCurrentPage(1);
-      setTotalPages((res?.numFound ?? PAGE_SIZE) / PAGE_SIZE);
-      setResult(res, 1);
-      setLoading(false);
+      const {searchType, sortingType} = useSearchType.getState();
+      if (searchType !== 'subject') {
+        const res = await QueryBooks({
+          query: query,
+          includeThumbnail: true,
+          queryType: searchType,
+          limit: PAGE_SIZE,
+          page: 1,
+          sort: sortingType,
+        });
+        setCurrentPage(1);
+        setTotalPages((res?.numFound ?? PAGE_SIZE) / PAGE_SIZE);
+        setResult(res, 1);
+        setLoading(false);
+      }
     }
   };
 
