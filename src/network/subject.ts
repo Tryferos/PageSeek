@@ -16,7 +16,7 @@ export const getWorksBySubject = async ({
   published_in = ['2000', '2024'],
 }: Props): Promise<WorksBySubject | null> => {
   const res = await Network.get<WorksBySubject>({
-    url: Endpoints.SubjectsKey.generate(key),
+    url: Endpoints.SubjectsKey.generate(key.toLowerCase().replaceAll(' ', '_')),
     params: {
       limit,
       offset,

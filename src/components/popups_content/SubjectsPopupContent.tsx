@@ -11,6 +11,7 @@ export const SubjectsPopupContent = () => {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
   const closePopup = usePopups(s => s.closePopup);
   const keyDownRef = useRef<(e: KeyboardEvent) => void>();
+  const [filter, setFilter] = useState<string>('');
 
   useEffect(() => {
     keyDownRef.current = e => {
@@ -62,17 +63,26 @@ export const SubjectsPopupContent = () => {
   }, [selectedSubject]);
 
   return (
-    <div className="w-full h-full flex flex-col gap-y-2 items-center">
+    <div className="w-full h-full flex flex-col gap-y-4 items-center">
+      <input
+        value={filter}
+        onChange={e => setFilter(e.target.value)}
+        type="search"
+        placeholder="Can't find your subject?"
+        className="w-[40%] h-full px-4 py-2 border-b-[1px] border-gray-200 focus:outline-none"
+      />
       <ul className="w-full flex flex-col gap-y-1">
-        {subjects.map(subject => (
-          <li
-            onClick={() => setSelectedSubject(subject)}
-            key={subject}
-            className={`w-full h-full cursor-pointer flex justify-center items-center gap-x-1 transition-transform 
+        {subjects
+          .filter(s => s.toLowerCase().includes(filter.toLowerCase()))
+          .map(subject => (
+            <li
+              onClick={() => setSelectedSubject(subject)}
+              key={subject}
+              className={`w-full h-full cursor-pointer flex justify-center items-center gap-x-1 transition-transform 
             ${selectedSubject === subject ? 'bg-orange-100 scale-101 font-wotfardMd' : 'hover:scale-101 hover:font-wotfardMd'}`}>
-            <p className="text-secondary text-base">{subject}</p>
-          </li>
-        ))}
+              <p className="text-secondary text-base">{subject}</p>
+            </li>
+          ))}
       </ul>
     </div>
   );
