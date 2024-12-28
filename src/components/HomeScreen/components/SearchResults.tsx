@@ -58,7 +58,7 @@ export const SearchResults = () => {
 
 const ListWrapper = ({children}: {children: React.ReactNode}) => {
   return (
-    <ul className="flex flex-wrap gap-x-2 gap-y-2 min-h-[100%] overflow-hidden p-2 overflow-y-auto scrollbar">
+    <ul className="flex flex-col gap-x-2 gap-y-2 min-h-[100%] overflow-hidden p-2 overflow-y-auto scrollbar">
       {children}
     </ul>
   );
