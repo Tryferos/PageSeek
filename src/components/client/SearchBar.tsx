@@ -1,3 +1,4 @@
+'use client';
 import {SearchIcon} from '@/icons/Icons';
 import {FC} from 'react';
 
