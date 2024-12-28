@@ -6,7 +6,7 @@ import {
   PersonIcon,
   SearchIcon,
 } from '@/icons/Icons';
-import {useSearchType} from '@/slices/search_type';
+import {useSearchType} from '@/slices/search_type_store';
 
 export const SearchTypeSelector = () => {
   const {searchType, setSearchType} = useSearchType();

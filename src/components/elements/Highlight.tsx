@@ -1,6 +1,6 @@
 'use client';
 
-import {useAlerts} from '@/slices/alerts';
+import {useAlerts} from '@/slices/alerts_store';
 import {memo, useEffect, useState} from 'react';
 
 export const HighlightedComponent = ({

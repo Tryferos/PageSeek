@@ -7,7 +7,7 @@ import {
   StatisticsIcon,
   UpwardsIcon,
 } from '@/icons/Icons';
-import {useSearchType} from '@/slices/search_type';
+import {useSearchType} from '@/slices/search_type_store';
 import {useMemo, useState} from 'react';
 
 export const SortingTypeSelector = () => {

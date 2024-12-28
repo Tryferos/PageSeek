@@ -1,5 +1,5 @@
 'use client';
-import {useAlerts} from '@/slices/alerts';
+import {useAlerts} from '@/slices/alerts_store';
 import {useEffect, useRef} from 'react';
 
 export const GlobalAlerts = () => {

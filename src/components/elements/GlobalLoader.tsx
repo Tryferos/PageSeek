@@ -1,5 +1,5 @@
 'use client';
-import {useLoading} from '@/slices/loading';
+import {useLoading} from '@/slices/loading_store';
 
 export const GlobalLoader = () => {
   const {loading} = useLoading();

@@ -1,5 +1,5 @@
 'use client';
-import {useSearch} from '@/slices/search';
+import {useSearch} from '@/slices/search_store';
 import Image from 'next/image';
 import {useEffect, useState} from 'react';
 
