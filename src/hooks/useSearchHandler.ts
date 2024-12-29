@@ -58,7 +58,7 @@ export const useSearchHandler = () => {
           key: query as SubjectKey,
           limit: PAGE_SIZE,
           offset: 0,
-          published_in: [`${publishedIn.start}`, `${publishedIn.end}`],
+          published_in: publishedIn,
         });
         setCurrentPage(1);
         setTotalPages((res?.work_count ?? PAGE_SIZE) / PAGE_SIZE);
@@ -138,7 +138,7 @@ export const useSearchHandler = () => {
           key: query as SubjectKey,
           limit: PAGE_SIZE,
           offset: (_currentPage - 1) * PAGE_SIZE,
-          published_in: [`${publishedIn.start}`, `${publishedIn.end}`],
+          published_in: publishedIn,
         });
         setTotalPages((res?.work_count ?? PAGE_SIZE) / PAGE_SIZE);
         setResult(
