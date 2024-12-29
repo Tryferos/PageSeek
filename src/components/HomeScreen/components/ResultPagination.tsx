@@ -15,11 +15,16 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
   const deferredPage = useDeferredValue(currentPage);
   const {loading} = useLoading();
   const {paginateBooks} = useSearchHandler();
-  const {sortingType, previousSortingType} = useSearchType();
+  const {sortingType, previousSortingType, previouslyPublishedIn, publishedIn} =
+    useSearchType();
 
   const hasChangedSortingType = useMemo(() => {
-    return sortingType !== previousSortingType;
-  }, [sortingType, previousSortingType]);
+    return (
+      sortingType !== previousSortingType ||
+      previouslyPublishedIn.start !== publishedIn.start ||
+      previouslyPublishedIn.end !== publishedIn.end
+    );
+  }, [sortingType, previousSortingType, previouslyPublishedIn, publishedIn]);
 
   const nextText = useMemo(() => {
     if (hasChangedSortingType) {

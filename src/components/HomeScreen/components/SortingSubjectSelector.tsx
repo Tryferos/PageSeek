@@ -11,7 +11,13 @@ const limits = {
 
 export const SortingSubjectSelector = () => {
   const setPublishedIn = useSearchType(s => s.setPublishedIn);
+  const setPreviouslyPublishedIn = useSearchType(
+    s => s.setPreviouslyPublishedIn,
+  );
   const storedPublishedIn = useSearchType(s => s.publishedIn);
+  const storedPreviouslyPublishedIn = useSearchType(
+    s => s.previouslyPublishedIn,
+  );
 
   const [start, setStart] = useState<number>();
   const [end, setEnd] = useState<number>();
@@ -25,6 +31,9 @@ export const SortingSubjectSelector = () => {
 
   useEffect(() => {
     if (!start && !end) {
+      /**
+       * * Set Already stored values
+       */
       setStart(storedPublishedIn.start ?? 1960);
       setEnd(storedPublishedIn.end ?? limits.end);
     }
@@ -43,6 +52,12 @@ export const SortingSubjectSelector = () => {
 
   useEffect(() => {
     if (start && end) {
+      if (
+        !storedPreviouslyPublishedIn.start ||
+        !storedPreviouslyPublishedIn.end
+      ) {
+        setPreviouslyPublishedIn({start, end});
+      }
       setPublishedIn({start, end});
     }
   }, [start, end]);

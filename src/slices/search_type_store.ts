@@ -5,10 +5,13 @@ type State = {
   searchType: keyof typeof SearchTypes;
   sortingType: keyof typeof SortTypes;
   previousSortingType: keyof typeof SortTypes;
-  publishedIn: {
-    start: number | null;
-    end: number | null;
-  };
+  publishedIn: PublishedIn;
+  previouslyPublishedIn: PublishedIn;
+};
+
+type PublishedIn = {
+  start: number | null;
+  end: number | null;
 };
 
 type Actions = {
@@ -16,12 +19,19 @@ type Actions = {
   setSortingType: (sortingType: State['sortingType']) => void;
   setPreviousSortingType: (sortingType: State['sortingType']) => void;
   setPublishedIn: (publishedIn: State['publishedIn']) => void;
+  setPreviouslyPublishedIn: (
+    publishedIn: State['previouslyPublishedIn'],
+  ) => void;
 };
 
 export const useSearchType = create<State & Actions>()(set => ({
   searchType: 'q',
   sortingType: 'want_to_read',
   publishedIn: {
+    start: null,
+    end: null,
+  },
+  previouslyPublishedIn: {
     start: null,
     end: null,
   },
@@ -37,5 +47,10 @@ export const useSearchType = create<State & Actions>()(set => ({
   },
   setPublishedIn: (publishedIn: State['publishedIn']) => {
     set({publishedIn});
+  },
+  setPreviouslyPublishedIn: (
+    previouslyPublishedIn: State['previouslyPublishedIn'],
+  ) => {
+    set({previouslyPublishedIn});
   },
 }));

@@ -15,8 +15,15 @@ export const useSearchHandler = () => {
   const {currentPage, setCurrentPage, setTotalPages} = usePagination();
   const {isQueryValid, query} = useSearch();
   const {setResult, lastPageFetched} = useSearchResult();
-  const {searchType, sortingType, previousSortingType, setPreviousSortingType} =
-    useSearchType();
+  const {
+    searchType,
+    sortingType,
+    previousSortingType,
+    setPreviousSortingType,
+    publishedIn,
+    previouslyPublishedIn,
+    setPreviouslyPublishedIn,
+  } = useSearchType();
   const searchBooks = async () => {
     if (isQueryValid && query && !loading) {
       setLoading(true);
@@ -40,7 +47,7 @@ export const useSearchHandler = () => {
           key: query as SubjectKey,
           limit: PAGE_SIZE,
           offset: 0,
-          published_in: ['2000', '2024'],
+          published_in: [`${publishedIn.start}`, `${publishedIn.end}`],
         });
         setCurrentPage(1);
         setTotalPages((res?.work_count ?? PAGE_SIZE) / PAGE_SIZE);
@@ -100,11 +107,27 @@ export const useSearchHandler = () => {
         setTotalPages((res?.numFound ?? PAGE_SIZE) / PAGE_SIZE);
         setResult(res, _currentPage);
       } else {
+        let _currentPage = currentPage;
+        if (
+          previouslyPublishedIn.start !== publishedIn.start ||
+          previouslyPublishedIn.end !== publishedIn.end
+        ) {
+          /*
+           * Sorting Dates Changed
+           * Reset Pagination and Result
+           */
+          _currentPage = 1;
+          setCurrentPage(1);
+          setTotalPages(1);
+          setResult(null, 1);
+        }
+
+        setPreviouslyPublishedIn(publishedIn);
         const res = await getWorksBySubject({
           key: query as SubjectKey,
           limit: PAGE_SIZE,
-          offset: (currentPage - 1) * PAGE_SIZE,
-          published_in: ['2000', '2024'],
+          offset: (_currentPage - 1) * PAGE_SIZE,
+          published_in: [`${publishedIn.start}`, `${publishedIn.end}`],
         });
         setTotalPages((res?.work_count ?? PAGE_SIZE) / PAGE_SIZE);
         setResult(
@@ -124,9 +147,9 @@ export const useSearchHandler = () => {
               ) ?? [],
             numFound: res?.work_count ?? 0,
             numFoundExact: true,
-            start: (currentPage - 1) * PAGE_SIZE,
+            start: (_currentPage - 1) * PAGE_SIZE,
           },
-          currentPage,
+          _currentPage,
         );
       }
       setLoading(false);
