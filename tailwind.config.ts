@@ -13,6 +13,29 @@ const config: Config = {
         ['wotfardMd']: ['var(--font-wotfard-medium)', 'Arial', 'sans-serif'],
         ['wotfardSb']: ['var(--font-wotfard-semibold)', 'Arial', 'sans-serif'],
       },
+      screens: {
+        small: {
+          max: '840px',
+        },
+        large: {
+          min: '840px',
+        },
+        mobile: {
+          max: '640px',
+        },
+        tablet: {
+          min: '840px',
+          max: '1124px',
+        },
+        laptop: {
+          min: '1124px',
+          max: '1280px',
+        },
+        desktop: {
+          min: '1280px',
+          max: '1536px',
+        },
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
@@ -23,6 +46,7 @@ const config: Config = {
         error: '#ef4444',
         success: '#22c55e',
         warning: '#f59e0b',
+        info: '#22d3ee',
       },
       scale: {
         101: '1.01',
