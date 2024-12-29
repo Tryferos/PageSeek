@@ -2,6 +2,7 @@ import {useSearchHandler} from '@/hooks/useSearchHandler';
 import {BackIcon} from '@/icons/Icons';
 import {useLoading} from '@/slices/loading_store';
 import {usePagination} from '@/slices/pagination_store';
+import {usePopups} from '@/slices/popups_store';
 import {useSearchType} from '@/slices/search_type_store';
 import {useDeferredValue, useEffect, useMemo} from 'react';
 
@@ -12,6 +13,7 @@ type Props = {
 
 export const ResultPagination = ({perPage, totalResults}: Props) => {
   const {currentPage, nextPage, previousPage} = usePagination();
+  const showPopup = usePopups(s => s.showPopup);
   const deferredPage = useDeferredValue(currentPage);
   const {loading} = useLoading();
   const {paginateBooks} = useSearchHandler();
@@ -47,14 +49,15 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
   }, [currentPage]);
   const onBack = () => {
     if (!loading) {
-      previousPage();
+      previousPage(hasChangedSortingType);
     }
   };
   const onNext = () => {
     if (!loading) {
-      nextPage();
+      nextPage(hasChangedSortingType);
     }
   };
+
   return (
     <div className="flex justify-between gap-y-2 select-none px-2">
       <div className="w-[175px]">

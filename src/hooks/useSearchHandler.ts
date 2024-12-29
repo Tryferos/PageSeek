@@ -1,3 +1,4 @@
+'use client';
 import {QueryBooks} from '@/network/search';
 import {getWorksBySubject} from '@/network/subject';
 import {useLoading} from '@/slices/loading_store';
@@ -7,6 +8,7 @@ import {useSearchResult} from '@/slices/search_result_store';
 import {useSearchType} from '@/slices/search_type_store';
 import {BookDocumentBlunt} from '@/types/search_books';
 import {SubjectKey} from '@/types/subject';
+import {useMemo} from 'react';
 
 const PAGE_SIZE = 9;
 
@@ -24,6 +26,15 @@ export const useSearchHandler = () => {
     previouslyPublishedIn,
     setPreviouslyPublishedIn,
   } = useSearchType();
+
+  const hasChangedSortingType = useMemo(() => {
+    return (
+      sortingType !== previousSortingType ||
+      previouslyPublishedIn.start !== publishedIn.start ||
+      previouslyPublishedIn.end !== publishedIn.end
+    );
+  }, [sortingType, previousSortingType, previouslyPublishedIn, publishedIn]);
+
   const searchBooks = async () => {
     if (isQueryValid && query && !loading) {
       setLoading(true);
@@ -80,7 +91,7 @@ export const useSearchHandler = () => {
   };
 
   const paginateBooks = async () => {
-    if (query && currentPage > lastPageFetched) {
+    if (query && (currentPage > lastPageFetched || hasChangedSortingType)) {
       setLoading(true);
       let _currentPage = currentPage;
       if (searchType !== 'subject') {
