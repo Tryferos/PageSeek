@@ -1,5 +1,7 @@
 'use client';
+import {Tooltip} from '@/components/elements/Tooltip';
 import {SearchTypes} from '@/constants/search';
+import {TooltipText} from '@/constants/text';
 import {
   IdentificationIcon,
   InfoIcon,
@@ -42,25 +44,26 @@ export const SearchTypeSelector = () => {
         const _key = key as keyof typeof SearchTypes;
         const title = SearchTypes[_key];
         return (
-          <div
-            onClick={() => {
-              if (_key === 'subject') {
-                openSubjectsPopup();
-              }
-              setSearchType(_key);
-            }}
-            className={`${searchType === key ? 'bg-gradient-to-tr from-orange-700 to-orange-400 via-orange-500 gap-x-1' : 'border-r-[1px] border-l-[1px] hover:bg-gradient-to-tr hover:from-orange-700 hover:to-orange-400 hover:via-orange-500'} 
-            cursor-pointer first:rounded-tl-md items-center flex justify-center w-full first:border-l-[0px] last:border-r-[0px] border-gray-200 group`}
-            key={key}>
+          <Tooltip key={key} text={TooltipText[title]}>
             <div
-              className={`scale-90 ${searchType === _key ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
-              {getIcon(_key)}
+              onClick={() => {
+                if (_key === 'subject') {
+                  openSubjectsPopup();
+                }
+                setSearchType(_key);
+              }}
+              className={`${searchType === key ? 'bg-gradient-to-tr from-orange-700 to-orange-400 via-orange-500 gap-x-1' : 'border-r-[1px] border-l-[1px] hover:bg-gradient-to-tr hover:from-orange-700 hover:to-orange-400 hover:via-orange-500'} 
+            cursor-pointer group-first:rounded-tl-md items-center flex justify-center w-full h-full group-first:border-l-[0px] group-last:border-r-[0px] border-gray-200 group`}>
+              <div
+                className={`scale-90 ${searchType === _key ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
+                {getIcon(_key)}
+              </div>
+              <div
+                className={`tablet:hidden first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${searchType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
+                <span className="first-letter:uppercase">{title}</span>
+              </div>
             </div>
-            <div
-              className={`tablet:hidden first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${searchType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
-              <span className="first-letter:uppercase">{title}</span>
-            </div>
-          </div>
+          </Tooltip>
         );
       })}
     </div>
