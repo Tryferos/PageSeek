@@ -1,6 +1,7 @@
 import {SearchMode} from './components/SearchMode';
 import {SearchResults} from './components/SearchResults';
 import {SearchTypeSelector} from './components/SearchTypeSelector';
+import {SortingSelector} from './components/SortingSelector';
 import {SortingTypeSelector} from './components/SortingTypeSelector';
 export default function HomeScreen() {
   return (
@@ -8,7 +9,7 @@ export default function HomeScreen() {
       <div className="flex justify-between">
         <SearchTypeSelector />
         <SearchMode />
-        <SortingTypeSelector />
+        <SortingSelector />
       </div>
       <div className="h-[75vh]">
         <SearchResults />
