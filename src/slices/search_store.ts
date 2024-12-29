@@ -15,7 +15,7 @@ export const useSearch = create<State>()((set, get) => ({
     set({
       query: q,
       previousQuery: previousQuery,
-      isQueryValid: q.length >= 4 && previousQuery !== q,
+      isQueryValid: q.length >= 4 && q.length <= 75 && previousQuery !== q,
     });
   },
   clearQuery: () => {
