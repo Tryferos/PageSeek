@@ -43,11 +43,11 @@ export const SortingTypeSelector = () => {
           className={`${sortingType === 'new' ? 'bg-gradient-to-tr from-orange-700 to-orange-400 via-orange-500 gap-x-1' : 'border-r-[1px] border-l-[1px] hover:bg-gradient-to-tr hover:from-orange-700 hover:to-orange-400 hover:via-orange-500'} 
             cursor-pointer last:rounded-tr-md items-center flex justify-center w-full last:border-r-[0px] first:border-l-[0px] border-gray-200 group`}>
           <div
-            className={`scale-90 ${sortingType === 'new' ? 'scale-[0.7] fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
+            className={`scale-90 ${sortingType === 'new' ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
             <UpwardsIcon width={20} height={20} />
           </div>
           <div
-            className={`first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${sortingType === 'new' ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
+            className={`first-letter:uppercase tablet:hidden text-white text-sm h-[24px] items-center justify-start flex transition-all ${sortingType === 'new' ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
             <span className="first-letter:uppercase">{'Recent'}</span>
           </div>
         </div>
@@ -64,11 +64,11 @@ export const SortingTypeSelector = () => {
           className={`${sortingType === 'old' ? 'bg-gradient-to-tr from-orange-700 to-orange-400 via-orange-500 gap-x-1' : 'border-r-[1px] border-l-[1px] hover:bg-gradient-to-tr hover:from-orange-700 hover:to-orange-400 hover:via-orange-500'} 
             cursor-pointer last:rounded-tr-md items-center flex justify-center w-full last:border-r-[0px] first:border-l-[0px] border-gray-200 group`}>
           <div
-            className={`scale-90 ${sortingType === 'old' ? 'scale-[0.7] fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
+            className={`scale-90 ${sortingType === 'old' ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
             <DownwardsIcon width={20} height={20} />
           </div>
           <div
-            className={`first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${sortingType === 'old' ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
+            className={`first-letter:uppercase tablet:hidden text-white text-sm h-[24px] items-center justify-start flex transition-all ${sortingType === 'old' ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
             <span className="first-letter:uppercase">{'Old'}</span>
           </div>
         </div>
@@ -87,11 +87,11 @@ export const SortingTypeSelector = () => {
             cursor-pointer last:rounded-tr-md items-center flex justify-center w-full last:border-r-[0px] first:border-l-[0px] border-gray-200 group`}
               key={key}>
               <div
-                className={`scale-90 ${sortingType === _key ? 'scale-[0.7] fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
+                className={`scale-90 ${sortingType === _key ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
                 {getIcon(_key)}
               </div>
               <div
-                className={`first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${sortingType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
+                className={`tablet:hidden first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${sortingType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
                 <span className="first-letter:uppercase">{title}</span>
               </div>
             </div>

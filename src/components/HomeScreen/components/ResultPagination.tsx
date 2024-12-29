@@ -53,14 +53,16 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
   return (
     <div className="flex justify-between gap-y-2 select-none px-2">
       <div className="w-[175px]">
-        <div
-          onClick={onBack}
-          className={`bg-gradient-to-tr backgroundeffect ${hasChangedSearchSortingType ? 'w-[145px]' : 'w-[155px]'} from-orange-700 to-orange-500 text-white font-wotfardMd px-4 py-2 rounded-md cursor-pointer flex items-center ${currentPage <= 1 || loading ? 'opacity-50 cursor-not-allowed' : 'group'}`}>
-          <div className="group-hover:opacity-100 group-hover:w-4 w-0 transition-all group-hover:-translate-x-2">
-            <BackIcon />
+        {!hasChangedSearchSortingType && (
+          <div
+            onClick={onBack}
+            className={`bg-gradient-to-tr backgroundeffect ${hasChangedSearchSortingType ? 'w-[145px]' : 'w-[155px]'} from-orange-700 to-orange-500 text-white font-wotfardMd px-4 py-2 rounded-md cursor-pointer flex items-center ${currentPage <= 1 || loading ? 'opacity-50 cursor-not-allowed' : 'group'}`}>
+            <div className="group-hover:opacity-100 group-hover:w-4 w-0 transition-all group-hover:-translate-x-2">
+              <BackIcon />
+            </div>
+            <p>{previousText}</p>
           </div>
-          <p>{previousText}</p>
-        </div>
+        )}
       </div>
       <div className="flex gap-x-4 justify-center flex-col items-center">
         <p className="text-xs">
