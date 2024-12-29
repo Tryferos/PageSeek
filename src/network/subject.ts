@@ -28,10 +28,15 @@ export const getWorksBySubject = async ({
       published_in: `${published_in.start}-${published_in.end}`,
     },
   });
-  if (res) {
-    await fillDocumentsWithMetadata(
-      res.works.map(w => ({...w, ia: [`${w.ia}`]})),
-    );
+  if (res && res.works) {
+    res.works = res.works.map(w => ({...w, ia: [`${w.ia}`]}));
   }
+
+  //! Deprecated
+  // if (res) {
+  //   await fillDocumentsWithMetadata(
+  //     res.works.map(w => ({...w, ia: [`${w.ia}`]})),
+  //   );
+  // }
   return res;
 };

@@ -39,9 +39,10 @@ export const QueryBooks = async ({
       sort: sort,
     },
   });
-  if (includeThumbnail && res && res.docs.length >= 1) {
-    await fillDocumentsWithMetadata(res.docs);
-  }
+  //! Deprecated
+  // if (includeThumbnail && res && res.docs.length >= 1) {
+  // await fillDocumentsWithMetadata(res.docs);
+  // }
   if (res) {
     return {
       ...res,

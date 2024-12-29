@@ -6,6 +6,7 @@ import {useSearch} from '@/slices/search_store';
 import {BookDocumentBlunt} from '@/types/search_books';
 import Link from 'next/link';
 import {useRef} from 'react';
+import {BookImage} from './BookImage';
 
 type Props = {
   book: BookDocumentBlunt;
@@ -38,16 +39,7 @@ export const BookBlunt = ({book}: Props) => {
       href={`${book.key}`}>
       <li key={book.key} className="w-full h-full">
         <div className="w-full h-full flex gap-x-4 cursor-pointer py-4 px-4 relative">
-          <figure className="relative w-[15vh] min-w-[128px] h-full">
-            <ImageFallback
-              fallbackSrc="/book.svg"
-              src={thumbnail ?? `/book.svg`}
-              alt={title}
-              fill
-              quality={100}
-              loading="lazy"
-            />
-          </figure>
+          <BookImage book={book} />
           <div className="flex items-center gap-x-1 absolute right-4 top-4">
             <p>{ratings_average?.toFixed(1) ?? '0'}</p>
             <StarIcon />
