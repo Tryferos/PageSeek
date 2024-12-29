@@ -1,5 +1,6 @@
 import {create} from 'zustand';
 import {usePopups} from './popups_store';
+import {useSearchResult} from './search_result_store';
 
 type State = {
   currentPage: number;

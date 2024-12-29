@@ -9,6 +9,7 @@ import {useSearchType} from '@/slices/search_type_store';
 import {BookDocumentBlunt} from '@/types/search_books';
 import {SubjectKey} from '@/types/subject';
 import {useMemo} from 'react';
+import {useCheckResetPagination} from './useCheckResetPagination';
 
 const PAGE_SIZE = 9;
 
@@ -18,22 +19,21 @@ export const useSearchHandler = () => {
   const {isQueryValid, query} = useSearch();
   const {setResult, lastPageFetched} = useSearchResult();
   const {
+    hasChangedSearchSortingType,
+    hasChangeSortingType,
+    hasChangedSearchType,
+  } = useCheckResetPagination();
+  const {
     searchType,
+    previouslySearchType,
     sortingType,
     previousSortingType,
     setPreviousSortingType,
+    setPreviouslySearchType,
     publishedIn,
     previouslyPublishedIn,
     setPreviouslyPublishedIn,
   } = useSearchType();
-
-  const hasChangedSortingType = useMemo(() => {
-    return (
-      sortingType !== previousSortingType ||
-      previouslyPublishedIn.start !== publishedIn.start ||
-      previouslyPublishedIn.end !== publishedIn.end
-    );
-  }, [sortingType, previousSortingType, previouslyPublishedIn, publishedIn]);
 
   const searchBooks = async () => {
     if (isQueryValid && query && !loading) {
@@ -91,11 +91,14 @@ export const useSearchHandler = () => {
   };
 
   const paginateBooks = async () => {
-    if (query && (currentPage > lastPageFetched || hasChangedSortingType)) {
+    if (
+      query &&
+      (currentPage > lastPageFetched || hasChangedSearchSortingType)
+    ) {
       setLoading(true);
       let _currentPage = currentPage;
       if (searchType !== 'subject') {
-        if (sortingType !== previousSortingType) {
+        if (sortingType !== previousSortingType || hasChangedSearchType) {
           /*
            * Sorting Type Changed
            * Reset Pagination and Result
@@ -107,6 +110,7 @@ export const useSearchHandler = () => {
         }
 
         setPreviousSortingType(sortingType);
+        setPreviouslySearchType(searchType);
         const res = await QueryBooks({
           query: query,
           includeThumbnail: true,
@@ -121,7 +125,8 @@ export const useSearchHandler = () => {
         let _currentPage = currentPage;
         if (
           previouslyPublishedIn.start !== publishedIn.start ||
-          previouslyPublishedIn.end !== publishedIn.end
+          previouslyPublishedIn.end !== publishedIn.end ||
+          hasChangedSearchType
         ) {
           /*
            * Sorting Dates Changed
@@ -133,6 +138,7 @@ export const useSearchHandler = () => {
           setResult(null, 1);
         }
 
+        setPreviouslySearchType(searchType);
         setPreviouslyPublishedIn(publishedIn);
         const res = await getWorksBySubject({
           key: query as SubjectKey,

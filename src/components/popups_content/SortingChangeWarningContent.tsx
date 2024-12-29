@@ -1,19 +1,33 @@
+import {useCheckResetPagination} from '@/hooks/useCheckResetPagination';
+import {useSearchHandler} from '@/hooks/useSearchHandler';
 import {usePagination} from '@/slices/pagination_store';
 import {usePopups} from '@/slices/popups_store';
+import {useSearchResult} from '@/slices/search_result_store';
 import {useSearchType} from '@/slices/search_type_store';
 
 export const SortingChangeWarningContent = () => {
   const closePopup = usePopups(s => s.closePopup);
   const setSortingType = useSearchType(s => s.setSortingType);
+  const setSearchType = useSearchType(s => s.setSearchType);
   const previousSortingType = useSearchType(s => s.previousSortingType);
-  const resetPagination = usePagination(s => s.reset);
+  const previouslySearchType = useSearchType(s => s.previouslySearchType);
+
+  const {paginateBooks} = useSearchHandler();
+
+  const {hasChangeSortingType, hasChangedSearchType} =
+    useCheckResetPagination();
 
   const resetSorting = () => {
-    setSortingType(previousSortingType);
+    if (hasChangeSortingType) {
+      setSortingType(previousSortingType);
+    } else if (hasChangedSearchType) {
+      setSearchType(previouslySearchType);
+    }
     closePopup();
   };
+
   const goWithNewSorting = () => {
-    resetPagination();
+    paginateBooks();
     closePopup();
   };
   return (
