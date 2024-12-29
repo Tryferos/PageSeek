@@ -8,7 +8,7 @@ export const SearchMode = () => {
   const {searchBooks} = useSearchHandler();
 
   return (
-    <div className="basis-[50%] w-full px-4">
+    <div className="basis-[35%] min-w-[250px] w-full small:rounded-tl-md small:min-w-[350px] small:w-[60vw]">
       <SearchBar
         searchFunction={searchBooks}
         search={query ?? ''}

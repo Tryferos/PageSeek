@@ -37,7 +37,7 @@ export const SearchTypeSelector = () => {
   }, [searchType]);
 
   return (
-    <div className="basis-[50%] min-w-[325px] select-none my-0 rounded-none rounded-tl-md mx-10 flex justify-between px-0 shadow-book-box hover:shadow-book-box-hover hover:scale-102 transition-all">
+    <div className="basis-[30%] min-w-[250px] small:w-[60vw] small:min-w-[350px] select-none my-0 rounded-none rounded-tl-md flex justify-between px-0 shadow-book-box hover:shadow-book-box-hover hover:scale-102 transition-all">
       {Object.keys(SearchTypes).map(key => {
         const _key = key as keyof typeof SearchTypes;
         const title = SearchTypes[_key];
@@ -53,11 +53,11 @@ export const SearchTypeSelector = () => {
             cursor-pointer first:rounded-tl-md items-center flex justify-center w-full first:border-l-[0px] last:border-r-[0px] border-gray-200 group`}
             key={key}>
             <div
-              className={`scale-90 ${searchType === _key ? 'scale-[0.7] fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
+              className={`scale-90 ${searchType === _key ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
               {getIcon(_key)}
             </div>
             <div
-              className={`first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex text-secondary transition-all ${searchType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
+              className={`tablet:hidden first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${searchType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>
               <span className="first-letter:uppercase">{title}</span>
             </div>
           </div>
