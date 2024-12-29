@@ -11,7 +11,7 @@ export const BookMetadataImage = async (ia: string) => {
     const {d1, dir, files: _files} = res;
     const files = _files
       ?.filter(file => file.name.endsWith('jpg') || file.name.endsWith('png'))
-      .sort((a, b) => b.name.length - a.name.length);
+      .sort((a, b) => a.name.length - b.name.length);
     if (!files || files.length < 1) {
       return null;
     }
@@ -31,5 +31,12 @@ export const fillDocumentsWithMetadata = async (
         doc.thumbnail = res?.includes('https') ? res : `https://${res}`;
       }
     }
+  }
+};
+
+export const getDocumentImageUrl = async (ia: string) => {
+  const res = await BookMetadataImage(ia);
+  if (res) {
+    return res?.includes('https') ? res : `https://${res}`;
   }
 };
