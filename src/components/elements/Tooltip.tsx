@@ -9,24 +9,39 @@ export const Tooltip = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
+  const checkRef = useRef<() => void>();
+
   useEffect(() => {
-    if (ref.current) {
-      const isRefCloseToEnd =
-        ref.current.getBoundingClientRect().right > window.innerWidth;
-      const isCloseToStart = ref.current.getBoundingClientRect().left < 0;
-      if (isRefCloseToEnd || isCloseToStart) {
-        ref.current.style.left = isRefCloseToEnd ? 'auto' : '0';
-        ref.current.style.right = isRefCloseToEnd ? '0' : 'auto';
-        if (indicatorRef.current) {
-          if (isRefCloseToEnd) {
-            indicatorRef.current.style.right = '8px';
-          } else {
-            indicatorRef.current.style.left = '8px';
+    const checkProximity = () => checkRef.current?.();
+    window.addEventListener('resize', checkProximity);
+    return () => {
+      window.removeEventListener('resize', checkProximity);
+    };
+  }, [checkRef]);
+
+  useEffect(() => {
+    checkRef.current = () => {
+      if (ref.current) {
+        const isRefCloseToEnd =
+          ref.current.getBoundingClientRect().right > window.innerWidth;
+        const isCloseToStart = ref.current.getBoundingClientRect().left < 0;
+        if (isRefCloseToEnd || isCloseToStart) {
+          ref.current.style.left = isRefCloseToEnd ? 'auto' : '0';
+          ref.current.style.right = isRefCloseToEnd ? '0' : 'auto';
+          if (indicatorRef.current) {
+            if (isRefCloseToEnd) {
+              indicatorRef.current.style.right = '8px';
+            } else {
+              indicatorRef.current.style.left = '8px';
+            }
           }
         }
       }
-    }
+    };
+
+    checkRef.current();
   }, [ref]);
+
   if (!text) {
     return <>{children}</>;
   } else {
