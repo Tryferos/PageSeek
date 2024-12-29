@@ -4,7 +4,7 @@ import {useSearchType} from '@/slices/search_type_store';
 import {useEffect, useRef, useState} from 'react';
 
 const limits = {
-  start: 1700,
+  start: 1400,
   end: new Date().getFullYear(),
   distance: 80,
 };
@@ -67,7 +67,7 @@ export const SortingSubjectSelector = () => {
      * Mouse Move (Start Listening to Drag)
      */
     mouseMoveRef.current = (e: MouseEvent) => {
-      const speed = 0.8;
+      const speed = 1.4;
       if (startPointRef.current && start && end) {
         const x = e.clientX;
         const startingPoint = startPointRef.current;
