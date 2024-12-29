@@ -6,7 +6,7 @@ import {useEffect, useRef, useState} from 'react';
 const limits = {
   start: 1700,
   end: new Date().getFullYear(),
-  distance: 20,
+  distance: 80,
 };
 
 export const SortingSubjectSelector = () => {
@@ -34,7 +34,7 @@ export const SortingSubjectSelector = () => {
       /**
        * * Set Already stored values
        */
-      setStart(storedPublishedIn.start ?? 1960);
+      setStart(storedPublishedIn.start ?? 1900);
       setEnd(storedPublishedIn.end ?? limits.end);
     }
   }, [start, end, storedPublishedIn]);
@@ -124,6 +124,9 @@ export const SortingSubjectSelector = () => {
     endPointRef.current = x;
   };
 
+  const bulletClassNames =
+    'absolute left-0 size-4 rounded-full z-[200] backgroundeffect hover:bg-orange-700 transition-transform';
+
   return (
     <div className="flex flex-col w-full h-full items-center">
       <p className="font-wotfardRg text-sm">
@@ -138,12 +141,12 @@ export const SortingSubjectSelector = () => {
         <div
           onMouseDown={onMouseDownStart}
           ref={startRef}
-          className="absolute left-0 size-4 rounded-full bg-orange-600 z-[200] hover:scale-101 hover:bg-orange-700 transition-transform"></div>
+          className={bulletClassNames}></div>
         <div className="absolute left-0 h-[2px] translate-y-2 w-full bg-gray-200 rounded-full"></div>
         <div
           onMouseDown={onMouseDownEnd}
           ref={endRef}
-          className="absolute left-0 size-4 rounded-full bg-orange-900 z-[200] hover:scale-101 hover:bg-orange-700 transition-transform"></div>
+          className={bulletClassNames}></div>
       </div>
     </div>
   );
