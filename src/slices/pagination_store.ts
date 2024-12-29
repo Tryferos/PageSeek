@@ -1,4 +1,5 @@
 import {create} from 'zustand';
+import {usePopups} from './popups_store';
 
 type State = {
   currentPage: number;
@@ -20,7 +21,8 @@ export const usePagination = create<State>()((set, get) => ({
   setCurrentPage: (page: number) => set({currentPage: page}),
   nextPage: (verifyChange = false) => {
     if (verifyChange) {
-      set({currentPage: 1, totalPages: 1});
+      const showPopup = usePopups.getState().showPopup;
+      showPopup('SortingChangeWarning', 'Sorting Change Warning');
     } else {
       set(({currentPage, totalPages}) => {
         if (currentPage >= totalPages) {
@@ -33,7 +35,8 @@ export const usePagination = create<State>()((set, get) => ({
   },
   previousPage: (verifyChange = false) => {
     if (verifyChange) {
-      set({currentPage: 1, totalPages: 1});
+      const showPopup = usePopups.getState().showPopup;
+      showPopup('SortingChangeWarning', 'Sorting Change Warning');
     } else {
       set(({currentPage}) => {
         if (currentPage <= 1) {

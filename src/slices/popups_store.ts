@@ -1,6 +1,6 @@
 import {create} from 'zustand';
 
-type Popup = 'Subjects';
+type Popup = 'Subjects' | 'SortingChangeWarning';
 
 type State = {
   popup: Popup | null;
