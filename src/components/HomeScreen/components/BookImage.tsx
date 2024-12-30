@@ -31,7 +31,7 @@ export const BookImage = ({book}: {book: BookDocument}) => {
     }
   }, [book.ia]);
   return (
-    <figure className="relative w-[15vh] min-w-[128px] h-full mobile:w-full mobile:max-w-[300px] mobile:aspect-video">
+    <figure className="relative w-[15vh] min-w-[128px] h-[200px] mobile:w-full mobile:max-w-[167px] mobile:h-[250px]">
       <ImageFallback
         fallbackSrc="/book.svg"
         src={imageUrl ?? `/book.svg`}
