@@ -28,14 +28,14 @@ export const SearchResults = () => {
     }
   }, [pageResult]);
 
-  if (loading && !pageResult?.docs.length) {
+  let trifon = true;
+
+  if ((loading && !pageResult?.docs.length) || trifon) {
     return (
-      <div className="w-full h-full flex flex-col gap-y-2">
-        <ListWrapper>
-          {new Array(6).fill(0).map((_, i) => (
-            <BookResultShimmer key={i} />
-          ))}
-        </ListWrapper>
+      <div className="w-full flex flex-wrap gap-y-10 mobile:gap-y-4 items-center justify-center pt-4 gap-x-10 relative mobile:h-[82vh] h-[75vh] overflow-y-auto scrollbar">
+        {new Array(6).fill(0).map((_, i) => (
+          <BookResultShimmer key={i} />
+        ))}
       </div>
     );
   }
