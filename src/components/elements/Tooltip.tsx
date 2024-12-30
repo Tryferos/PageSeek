@@ -50,7 +50,7 @@ export const Tooltip = ({
         {children}
         <div
           ref={ref}
-          className="absolute group-hover:opacity-100 hover:opacity-100 opacity-0 pointer-events-none rounded-md hover:pointer-events-auto text-center justify-center items-center right-[-50%] top-[calc(100%+8px)] transition-all bg-white shadow-book-result-hover">
+          className="absolute small:hidden group-hover:opacity-100 hover:opacity-100 opacity-0 pointer-events-none rounded-md hover:pointer-events-auto text-center justify-center items-center right-[-50%] top-[calc(100%+8px)] transition-all bg-white shadow-book-result-hover">
           <div
             ref={indicatorRef}
             className="absolute -top-[8px] right-[calc(50%-6px)] size-4 rotate-45 bg-white"></div>
