@@ -11,7 +11,7 @@ export default function HomeScreen() {
         <SearchMode />
         <SortingSelector />
       </div>
-      <div className="h-[75vh]">
+      <div className="h-[75vh] small:h-[60vh]">
         <SearchResults />
       </div>
     </div>

@@ -23,6 +23,9 @@ const config: Config = {
         mobile: {
           max: '640px',
         },
+        mobileLg: {
+          max: '840px',
+        },
         tablet: {
           min: '840px',
           max: '1124px',
