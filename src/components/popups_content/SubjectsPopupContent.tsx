@@ -1,5 +1,6 @@
 'use client';
 import {Subjects} from '@/constants/search';
+import {useDimensions} from '@/hooks/useDimensions';
 import {usePopups} from '@/slices/popups_store';
 import {useSearch} from '@/slices/search_store';
 import {useEffect, useMemo, useRef, useState} from 'react';
@@ -12,6 +13,7 @@ export const SubjectsPopupContent = () => {
   const closePopup = usePopups(s => s.closePopup);
   const keyDownRef = useRef<(e: KeyboardEvent) => void>();
   const [filter, setFilter] = useState<string>('');
+  const {isSmall} = useDimensions();
 
   const subjects = useMemo(() => {
     return _subjects.filter(s =>
@@ -72,6 +74,14 @@ export const SubjectsPopupContent = () => {
     }
   }, [selectedSubject]);
 
+  const onSelect = (subject: string) => {
+    setSelectedSubject(subject);
+    if (isSmall) {
+      setQuery(subject);
+      closePopup();
+    }
+  };
+
   return (
     <div className="w-full h-full flex flex-col gap-y-4 items-center">
       <input
@@ -85,7 +95,7 @@ export const SubjectsPopupContent = () => {
         {subjects.map(subject => (
           <li
             id={subject}
-            onClick={() => setSelectedSubject(subject)}
+            onClick={() => onSelect(subject)}
             key={subject}
             className={`w-full h-full cursor-pointer flex justify-center items-center gap-x-1 transition-transform 
             ${selectedSubject === subject ? 'bg-orange-100 scale-101 font-wotfardMd' : 'hover:scale-101 hover:font-wotfardMd'}`}>
