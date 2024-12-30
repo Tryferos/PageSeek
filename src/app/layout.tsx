@@ -6,7 +6,7 @@ import {GlobalAlerts} from '@/components/elements/GlobalAlerts';
 import {GlobalPopups} from '@/components/elements/GlobalPopups';
 
 export const metadata: Metadata = {
-  title: '3D Version',
+  title: 'PageSeek',
   description: 'Three.js Web App',
 };
 

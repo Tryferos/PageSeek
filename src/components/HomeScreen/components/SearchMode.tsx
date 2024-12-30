@@ -8,12 +8,15 @@ export const SearchMode = () => {
   const {searchBooks} = useSearchHandler();
 
   return (
-    <div className="basis-[35%] min-w-[250px] w-full small:rounded-tl-md small:min-w-[350px] small:w-[60vw]">
-      <SearchBar
-        searchFunction={searchBooks}
-        search={query ?? ''}
-        setSearch={setQuery}
-      />
-    </div>
+    <>
+      {query && <title>Searching for {query}</title>}
+      <div className="basis-[35%] min-w-[250px] w-full small:rounded-tl-md small:min-w-[350px] small:w-[60vw]">
+        <SearchBar
+          searchFunction={searchBooks}
+          search={query ?? ''}
+          setSearch={setQuery}
+        />
+      </div>
+    </>
   );
 };
