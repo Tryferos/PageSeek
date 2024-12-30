@@ -28,9 +28,7 @@ export const SearchResults = () => {
     }
   }, [pageResult]);
 
-  let trifon = true;
-
-  if ((loading && !pageResult?.docs.length) || trifon) {
+  if (loading && !pageResult?.docs.length) {
     return (
       <div className="w-full flex flex-wrap gap-y-10 mobile:gap-y-4 items-center justify-center pt-4 gap-x-10 relative mobile:h-[82vh] h-[75vh] overflow-y-auto scrollbar">
         {new Array(6).fill(0).map((_, i) => (
