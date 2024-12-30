@@ -17,6 +17,8 @@ export const HighlightedComponent = ({
   useEffect(() => {
     if (highlight.trim()) {
       setRegex(getRegex(highlight));
+    } else {
+      setRegex(undefined);
     }
   }, [highlight]);
 
