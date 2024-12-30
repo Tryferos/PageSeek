@@ -4,7 +4,10 @@ import {AuthorWorksRichEntry} from '@/types/author';
 import {useMemo, useRef} from 'react';
 import Link from 'next/link';
 
-export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
+export const AuthorBook = ({
+  book,
+  title: _title,
+}: Omit<AuthorWorksRichEntry, 'key'>) => {
   const ref = useRef<HTMLLIElement>(null);
   const onMouseMove = (e: React.MouseEvent<HTMLLIElement>) => {
     if (ref.current) {
@@ -19,7 +22,8 @@ export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
   const description = useMemo(() => {
     if (!_description) return undefined;
 
-    const words = _description.split(' ');
+    const redundantDescriptionIndex: number = _description?.indexOf('--') ?? -1;
+    const words = _description.slice(0, redundantDescriptionIndex).split(' ');
     const maxWords = 30;
     return (
       words
@@ -28,13 +32,13 @@ export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
     );
   }, [_description]);
   return (
-    <Link
-      href={`/works/${book._key?.replace('/works/', '')}`}
-      className="focus:border-none focus:outline-none">
-      <li
-        ref={ref}
-        onMouseMove={onMouseMove}
-        className="px-3 shadow-book-box backgroundeffect hover:shadow-book-box-hover hover:-translate-x-1 hover:-translate-y-1 cursor-pointer py-2 rounded-tl-md min-w-[275px] w-[25%] h-[28vh] relative text-gray-100  overflow-hidden">
+    <li
+      ref={ref}
+      onMouseMove={onMouseMove}
+      className="px-3 shadow-book-box backgroundeffect hover:shadow-book-box-hover hover:-translate-x-1 hover:-translate-y-1 cursor-pointer py-2 rounded-tl-md min-w-[275px] w-[25%] h-[28vh] relative text-gray-100 overflow-hidden">
+      <Link
+        href={`/works/${book._key?.replace('/works/', '')}`}
+        className="focus:border-none focus:outline-none">
         <div className="absolute -top-3 -left-3 size-6 bg-orange-700 rotate-45"></div>
         <div className="flex flex-col gap-y-1">
           <p className="font-wotfardMd text-white">{title ?? _title}</p>
@@ -53,7 +57,7 @@ export const AuthorBook = ({book, title: _title}: AuthorWorksRichEntry) => {
             <StarIcon />
           </div>
         )}
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 };

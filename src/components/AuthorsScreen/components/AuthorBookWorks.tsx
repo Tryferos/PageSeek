@@ -6,7 +6,7 @@ type Props = {
   name: string;
 };
 export const AuthorBookWorks = async ({id, name}: Props) => {
-  const works = await getAuthorWorksRich({key: id, limit: 10});
+  const works = await getAuthorWorksRich({key: id, limit: 5});
   // const bookWorks = works?.entries.filter(
   //   entry =>
   //     (entry.book.description && entry.book.description.length > 0) ||
@@ -27,7 +27,7 @@ export const AuthorBookWorks = async ({id, name}: Props) => {
         </p>
         {
           <ul className="flex px-2 gap-x-4 overflow-x-auto py-2 scrollbar pb-4">
-            {(works?.entries ?? [])
+            {works.entries
               .sort((a, b) => {
                 if (a.book.description || b.book.description) {
                   return (
@@ -53,8 +53,8 @@ export const AuthorBookWorks = async ({id, name}: Props) => {
                   return a.book.title.localeCompare(b.book.title);
                 }
               })
-              .map(entry => (
-                <AuthorBook {...entry} key={entry.key} />
+              .map((entry, i) => (
+                <AuthorBook {...entry} key={i} />
               ))}
           </ul>
         }
