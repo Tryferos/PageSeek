@@ -30,17 +30,19 @@ export const SearchResults = () => {
 
   if (loading && !pageResult?.docs.length) {
     return (
-      <ListWrapper>
-        {new Array(6).fill(0).map((_, i) => (
-          <BookResultShimmer key={i} />
-        ))}
-      </ListWrapper>
+      <div className="w-full h-full flex flex-col gap-y-2">
+        <ListWrapper>
+          {new Array(6).fill(0).map((_, i) => (
+            <BookResultShimmer key={i} />
+          ))}
+        </ListWrapper>
+      </div>
     );
   }
 
   if (pageResult && pageResult?.docs.length > 0) {
     return (
-      <div className="w-full h-full flex flex-col gap-y-2">
+      <div className="w-full h-full flex flex-col gap-y-2 relative z-[99999]">
         <ListWrapper>
           {pageResult.docs.slice(0, 9).map(book => (
             <BookBlunt book={book} key={book.key} />

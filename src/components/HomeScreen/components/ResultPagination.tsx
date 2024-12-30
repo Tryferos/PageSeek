@@ -51,7 +51,7 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
   };
 
   return (
-    <div className="flex justify-between gap-y-2 select-none px-2">
+    <div className="flex justify-between gap-y-2 select-none px-2 z-[99999] absolute w-full -bottom-10">
       <div className="w-[175px]">
         {!hasChangedSearchSortingType && (
           <div
@@ -64,7 +64,7 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
           </div>
         )}
       </div>
-      <div className="flex gap-x-4 justify-center flex-col items-center">
+      <div className="flex gap-x-4 justify-center flex-col items-center z-[99999] absolute w-full -top-10 left-0 pointer-events-none">
         <p className="text-xs">
           Showing{' '}
           <span className="font-wotfardMd">
