@@ -35,7 +35,7 @@ export const BookBlunt = ({book}: Props) => {
     <Link
       onMouseMove={onMouseMove}
       ref={ref}
-      className="hover:scale-[101%] transition-transform min-h-[30%] max-h-[35%] grow basis-auto box-border flex-col gap-4 min-w-[340px] relative overflow-hidden searchresultseffect bg-orange-50 rounded"
+      className="hover:scale-[101%] transition-transform min-h-[200px] h-[35%] grow basis-auto box-border flex-col gap-4 min-w-[400px] relative overflow-hidden searchresultseffect bg-orange-50 rounded"
       href={`${book.key}`}>
       <li key={book.key} className="w-full h-full">
         <div className="w-full h-full flex gap-x-4 cursor-pointer py-4 px-4 relative">
@@ -67,7 +67,7 @@ export const BookBlunt = ({book}: Props) => {
                 ))}
               </div>
             </div>
-            <div className="absolute bottom-1 flex justify-between w-full flex-wrap">
+            <div className="absolute bottom-1 flex justify-between w-full flex-wrap gap-x-2">
               {isbn && isbn?.[0] && (
                 <p className="text-xs font-wotfardRg text-secondary flex items-end gap-x-1">
                   ISBN:{' '}

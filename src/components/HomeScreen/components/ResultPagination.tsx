@@ -64,7 +64,7 @@ export const ResultPagination = ({perPage, totalResults}: Props) => {
           </div>
         )}
       </div>
-      <div className="flex gap-x-4 justify-center flex-col items-center z-[200] absolute w-full -top-10 left-0 pointer-events-none">
+      <div className="flex gap-x-4 justify-center flex-col items-center z-[200] absolute w-full small:top-4 tablet:top-2 desktop:top-8 laptop:top-10 -top-0 left-0 pointer-events-none">
         <p className="text-xs">
           Showing{' '}
           <span className="font-wotfardMd">
