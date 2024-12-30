@@ -12,22 +12,24 @@ import {usePopups} from '@/slices/popups_store';
 import {useSearchType} from '@/slices/search_type_store';
 import {useCallback, useEffect} from 'react';
 
+export const getSearchIcon = (searchType: keyof typeof SearchTypes) => {
+  if (searchType === 'q') {
+    return <SearchIcon width={16} height={16} />;
+  } else if (searchType === 'title') {
+    return <IdentificationIcon width={20} height={20} />;
+  } else if (searchType === 'author') {
+    return <PersonIcon width={20} height={20} />;
+  } else if (searchType === 'subject') {
+    return <InfoIcon width={22} height={22} />;
+  } else {
+    return null;
+  }
+};
+
 export const SearchTypeSelector = () => {
   const {searchType, setSearchType} = useSearchType();
   const showPopup = usePopups(s => s.showPopup);
-  const getIcon = (searchType: keyof typeof SearchTypes) => {
-    if (searchType === 'q') {
-      return <SearchIcon width={16} height={16} />;
-    } else if (searchType === 'title') {
-      return <IdentificationIcon width={20} height={20} />;
-    } else if (searchType === 'author') {
-      return <PersonIcon width={20} height={20} />;
-    } else if (searchType === 'subject') {
-      return <InfoIcon width={22} height={22} />;
-    } else {
-      return null;
-    }
-  };
+
   useEffect(() => {
     openSubjectsPopup();
   }, [searchType]);
@@ -56,7 +58,7 @@ export const SearchTypeSelector = () => {
             cursor-pointer group-first:rounded-tl-md items-center flex justify-center w-full h-full group-first:border-l-[0px] group-last:border-r-[0px] border-gray-200 group`}>
               <div
                 className={`scale-90 ${searchType === _key ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
-                {getIcon(_key)}
+                {getSearchIcon(_key)}
               </div>
               <div
                 className={`tablet:hidden mobile:hidden first-letter:uppercase text-white text-sm h-[24px] items-center justify-start flex transition-all ${searchType === _key ? 'opacity-100 translate-x-0 w-[60%]' : 'opacity-0 -translate-x-4 w-0'}`}>

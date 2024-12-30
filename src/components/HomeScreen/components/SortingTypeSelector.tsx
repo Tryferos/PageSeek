@@ -44,7 +44,7 @@ export const SortingTypeSelector = () => {
               }
             }}
             className={`${sortingType === 'new' ? 'bg-gradient-to-tr from-orange-700 to-orange-400 via-orange-500 gap-x-1' : 'border-r-[1px] border-l-[1px] hover:bg-gradient-to-tr hover:from-orange-700 hover:to-orange-400 hover:via-orange-500'} 
-            cursor-pointer small:group-first:rounded-tl-md group-last:rounded-tr-md items-center h-full flex justify-center w-full group-last:border-r-[0px] group-first:border-l-[0px] border-gray-200 group`}>
+            cursor-pointer group-last:rounded-tr-md items-center h-full flex justify-center w-full group-last:border-r-[0px] group-first:border-l-[0px] border-gray-200 group`}>
             <div
               className={`scale-90 ${sortingType === 'new' ? 'scale-[0.7] tablet:scale-100 fill-gray-200 text-gray-200' : 'group-hover:text-gray-200 group-hover:fill-gray-200'} transition-transform`}>
               <UpwardsIcon width={20} height={20} />

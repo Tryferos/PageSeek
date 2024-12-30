@@ -125,10 +125,10 @@ export const SortingSubjectSelector = () => {
   };
 
   const bulletClassNames =
-    'absolute small:-top-1 left-0 size-4 rounded-full z-[200] backgroundeffect hover:bg-orange-700 transition-transform';
+    'absolute cursor-pointer left-0 size-4 rounded-full z-[200] backgroundeffect hover:bg-orange-700 transition-transform';
 
   return (
-    <div className="flex flex-col w-full h-full items-center">
+    <div className="flex flex-col w-full h-full items-center select-none cursor-default">
       <p className="font-wotfardRg text-sm">
         Published in{' '}
         <span className="text-base font-wotfardMd">
@@ -142,7 +142,7 @@ export const SortingSubjectSelector = () => {
           onMouseDown={onMouseDownStart}
           ref={startRef}
           className={bulletClassNames}></div>
-        <div className="absolute left-0 small:-top-1 h-[2px] translate-y-2 w-full bg-gray-200 rounded-full"></div>
+        <div className="absolute left-0 h-[2px] translate-y-2 w-full bg-gray-200 rounded-full"></div>
         <div
           onMouseDown={onMouseDownEnd}
           ref={endRef}

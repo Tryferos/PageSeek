@@ -13,14 +13,7 @@ type Props = {
 };
 export const BookBlunt = ({book}: Props) => {
   const {query} = useSearch();
-  const {
-    title,
-    thumbnail,
-    author_name,
-    first_publish_year,
-    ratings_average,
-    isbn,
-  } = book;
+  const {title, author_name, first_publish_year, ratings_average, isbn} = book;
   const ref = useRef<HTMLAnchorElement>(null);
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (ref.current) {

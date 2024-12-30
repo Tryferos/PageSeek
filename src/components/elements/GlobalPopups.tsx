@@ -4,6 +4,7 @@ import {SubjectsPopupContent} from '../popups_content/SubjectsPopupContent';
 import {usePopups} from '@/slices/popups_store';
 import {useEffect} from 'react';
 import {SortingChangeWarningContent} from '../popups_content/SortingChangeWarningContent';
+import {FiltersMobilePopupContent} from '../popups_content/FiltersMobilePopupContent';
 
 export const GlobalPopups = () => {
   const {popup, title, closePopup} = usePopups();
@@ -46,6 +47,7 @@ export const GlobalPopups = () => {
             {popup === 'SortingChangeWarning' && (
               <SortingChangeWarningContent />
             )}
+            {popup === 'FiltersMobile' && <FiltersMobilePopupContent />}
           </div>
         </div>
       )}
