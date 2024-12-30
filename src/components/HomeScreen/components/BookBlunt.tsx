@@ -35,17 +35,17 @@ export const BookBlunt = ({book}: Props) => {
     <Link
       onMouseMove={onMouseMove}
       ref={ref}
-      className="hover:scale-[101%] transition-transform min-h-[200px] h-[35%] grow basis-auto box-border flex-col gap-4 min-w-[400px] relative overflow-hidden searchresultseffect bg-orange-50 rounded"
+      className="hover:scale-[101%] transition-transform mobile:min-h-[400px] min-h-[200px] h-[35%] grow basis-auto box-border flex-col gap-4 min-w-[250px] relative overflow-hidden searchresultseffect bg-orange-50 rounded"
       href={`${book.key}`}>
       <li key={book.key} className="w-full h-full">
-        <div className="w-full h-full flex gap-x-4 cursor-pointer py-4 px-4 relative">
+        <div className="w-full h-full mobile:flex-col mobile:gap-y-4 mobile:items-center flex gap-x-4 cursor-pointer py-4 px-4 relative">
           <BookImage book={book} />
-          <div className="flex items-center gap-x-1 absolute right-4 top-4">
+          <div className="flex items-center gap-x-1 mobile:hidden absolute right-4 top-4">
             <p>{ratings_average?.toFixed(1) ?? '0'}</p>
             <StarIcon />
           </div>
           <div className="gap-y-2 flex flex-col relative w-full">
-            <p className="text-m font-wotfardMd w-[80%]">
+            <p className="text-md font-wotfardMd w-[80%] mobile:text-center mobile:w-full">
               <Highlighted text={title} highlight={query ?? ''} />
             </p>
             <div className="text-sm font-wotfardRg text-secondary flex flex-col gap-y-1">
@@ -67,7 +67,16 @@ export const BookBlunt = ({book}: Props) => {
                 ))}
               </div>
             </div>
-            <div className="absolute bottom-1 flex justify-between w-full flex-wrap gap-x-2">
+            {ratings_average && (
+              <div className="items-center gap-x-1 hidden mobile:flex">
+                <p>
+                  <span className="font-wotfardRg text-sm">Rated </span>
+                  {ratings_average.toFixed(1)}
+                </p>
+                <StarIcon />
+              </div>
+            )}
+            <div className="absolute bottom-1 flex mobile:relative justify-between w-full flex-wrap gap-x-2">
               {isbn && isbn?.[0] && (
                 <p className="text-xs font-wotfardRg text-secondary flex items-end gap-x-1">
                   ISBN:{' '}
