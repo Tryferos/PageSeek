@@ -79,9 +79,9 @@ export const SubjectsPopupContent = () => {
         onChange={e => setFilter(e.target.value)}
         type="search"
         placeholder="Can't find your subject?"
-        className="w-[40%] h-full px-4 py-2 border-b-[1px] border-gray-200 focus:outline-none focus:border-gray-400"
+        className="w-[40%] h-full px-4 py-2 border-b-[1px] border-gray-200 focus:outline-none focus:border-gray-400 small:w-[60%] mobile:w-[70%]"
       />
-      <ul className="w-full flex flex-col gap-y-1">
+      <ul className="w-full flex flex-col gap-y-1 mobile:gap-y-2">
         {subjects.map(subject => (
           <li
             id={subject}

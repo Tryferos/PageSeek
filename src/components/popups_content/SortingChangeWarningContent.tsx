@@ -31,8 +31,8 @@ export const SortingChangeWarningContent = () => {
     closePopup();
   };
   return (
-    <div className="w-full h-[23vh] py-2 flex flex-col items-center justify-between ">
-      <div className="flex flex-col items-center text-center">
+    <div className="w-full h-[23vh] small:h-[28vh] mobile:h-[33vh] py-2 flex flex-col items-center justify-between ">
+      <div className="flex flex-col items-center text-center mobile:gap-y-1">
         <p className="font-wotfardMd text-lg text-red-600 mb-2">
           You have changed the {hasChangeSortingType ? 'sorting' : 'search'}{' '}
           method. This action will reset the pagination!
@@ -52,15 +52,15 @@ export const SortingChangeWarningContent = () => {
           {hasChangeSortingType ? 'Sorting' : 'method'}".
         </p>
       </div>
-      <div className="flex items-end justify-center gap-x-4 w-full">
+      <div className="flex items-end justify-center gap-x-4 w-full mobile:flex-col mobile:gap-y-2 mobile:items-center">
         <button
           onClick={resetSorting}
-          className="px-4 py-2 outline outline-1 hover:brightness-125 outline-orange-700 hover:scale-101 transition-all rounded-md text-orange-700">
+          className="px-4 py-2 tablet:text-sm small:text-sm small:px-3 small:py-2 outline outline-1 hover:brightness-125 outline-orange-700 hover:scale-101 transition-all rounded-md text-orange-700">
           Reset to previous {hasChangeSortingType ? 'Sorting' : 'Search'} method
         </button>
         <button
           onClick={goWithNewSorting}
-          className="px-4 py-2 backgroundeffect rounded-md text-gray-100 hover:scale-101 ">
+          className="px-4 py-2 tablet:text-sm small:text-sm small:px-3 small:py-2 backgroundeffect rounded-md text-gray-100 hover:scale-101 ">
           Search with new {hasChangeSortingType ? 'Sorting' : 'method'}
         </button>
       </div>
