@@ -42,7 +42,7 @@ export const SearchResults = () => {
 
   if (pageResult && pageResult?.docs.length > 0) {
     return (
-      <div className="w-full h-full flex flex-col gap-y-2 relative z-[99999]">
+      <div className="w-full h-full flex flex-col gap-y-2 relative z-[200]">
         <ListWrapper>
           {pageResult.docs.slice(0, 9).map(book => (
             <BookBlunt book={book} key={book.key} />

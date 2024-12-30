@@ -5,13 +5,13 @@ import {SortingSelector} from './components/SortingSelector';
 import {SortingTypeSelector} from './components/SortingTypeSelector';
 export default function HomeScreen() {
   return (
-    <div className="flex flex-col gap-y-4 h-full w-full z-[99999]">
-      <div className="flex justify-between small:justify-center small:items-center small:flex-col small:gap-y-4 small:h-[25vh] gap-x-4 ">
+    <div className="flex flex-col gap-y-4 h-full w-full z-[200]">
+      <div className="flex justify-between small:justify-center small:items-center small:flex-col small:gap-y-4 small:h-[25vh] gap-x-4 z-[200]">
         <SearchTypeSelector />
         <SearchMode />
         <SortingSelector />
       </div>
-      <div className="h-[78vh] small:h-[60vh] z-[9999]">
+      <div className="h-[78vh] small:h-[60vh] z-[100]">
         <SearchResults />
       </div>
     </div>

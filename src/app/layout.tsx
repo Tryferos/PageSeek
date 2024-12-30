@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${FontFamilies.wotfard} antialiased font-wotfard font-wotfardRg scrollbar overflow-x-hidden`}>
         <main className="w-[100vw] min-h-[70vh] py-6 px-6 pb-0 bg-gray-100 relative overflow-x-hidden">
-          <div id="children-wrapper" className="z-[99999] pointer-events-auto">
+          <div id="children-wrapper" className="z-[200] pointer-events-auto">
             {children}
             <footer className="w-[calc(100%+96px)] pointer-events-none min-w-[700px] -ml-12 h-[90px] flex justify-center items-end relative overflow-hidden z-[1]">
               <Image
