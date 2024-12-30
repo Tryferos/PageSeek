@@ -11,7 +11,7 @@ export const SearchMode = () => {
   return (
     <>
       {query && <title>Searching for {query}</title>}
-      <div className="basis-[35%] small:basis-auto min-w-[250px] w-full small:rounded-tl-md mobile:w-[calc(90%-16px)] small:w-[60vw]">
+      <div className="basis-[35%] small:basis-auto large:min-w-[250px] w-full small:min-w-[200px] small:rounded-tl-md small:w-[90%]">
         <SearchBar
           searchFunction={searchBooks}
           search={query ?? ''}
