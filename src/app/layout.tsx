@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${FontFamilies.wotfard} antialiased font-wotfard font-wotfardRg scrollbar overflow-x-hidden`}>
-        <main className="w-[100vw] min-h-[70vh] py-6 px-6 pb-0 bg-gray-100 relative overflow-x-hidden">
+        <main className="w-[100vw] min-h-[70vh] py-6 px-6 mobile:py-4 mobile:px-2 mobile:pb-0 pb-0 bg-gray-100 relative overflow-x-hidden">
           <div id="children-wrapper" className="z-[200] pointer-events-auto">
             {children}
             <footer className="w-[calc(100%+96px)] pointer-events-none min-w-[700px] -ml-12 h-[90px] flex justify-center items-end relative overflow-hidden z-[1]">
