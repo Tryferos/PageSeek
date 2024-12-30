@@ -1,17 +1,10 @@
 'use client';
+import {InfoIcon} from '@/icons/Icons';
 import {useAlerts} from '@/slices/alerts_store';
 import {useEffect, useRef} from 'react';
 
 export const GlobalAlerts = () => {
-  const ref = useRef<HTMLDivElement>(null);
   const {alert, removeAlert} = useAlerts();
-
-  useEffect(() => {
-    if (ref.current && alert) {
-      const {duration} = alert;
-      ref.current.style.width = `${((duration / 1000) * 100) / (duration / 1000)}%`;
-    }
-  }, [alert, ref]);
 
   if (!alert) {
     return null;
@@ -21,16 +14,16 @@ export const GlobalAlerts = () => {
         ? 'bg-success'
         : alert.type === 'Error'
           ? 'bg-error'
-          : 'bg-warning';
+          : alert.type === 'Info'
+            ? 'bg-info'
+            : 'bg-warning';
     return (
-      <div className="fixed top-0 left-0 w-full h-full flex justify-center items-start z-[1000]">
+      <div className="fixed top-0 left-0 w-full h-full flex justify-center items-start z-[1000] pointer-events-none">
         <div
           onClick={removeAlert}
-          className={`w-[30%] cursor-pointer min-w-[250px] h-[64px] text-white ${styles} rounded-b-md flex flex-col gap-y-1 px-4 py-2 shadow-book-result bg-opacity-70 relative`}>
-          <p>{alert.message}</p>
-          <div
-            ref={ref}
-            className="absolute left-0 bottom-0 w-[1%] h-[2px] bg-white transition-all"></div>
+          className={`w-[30%] cursor-pointer min-w-[250px] h-[64px] text-white ${styles} rounded-b-xl flex items-center gap-x-4 px-4 py-2 shadow-book-result bg-opacity-80 relative pointer-events-auto`}>
+          {alert.type === 'Info' && <InfoIcon width={24} height={24} />}
+          <p className="font-wotfardMd">{alert.message}</p>
         </div>
       </div>
     );

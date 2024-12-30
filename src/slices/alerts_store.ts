@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 
 type Alert = {
-  type: 'Success' | 'Error' | 'Warning';
+  type: 'Success' | 'Error' | 'Warning' | 'Info';
   message: string;
   duration: number;
 };
