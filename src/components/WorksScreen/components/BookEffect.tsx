@@ -6,8 +6,9 @@ export const BookEffect = () => {
   const ref = useRef<HTMLDivElement>(null);
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (ref.current) {
-      const x = e.pageX - ref.current?.offsetLeft;
-      const y = e.pageY - ref.current?.offsetTop;
+      const rect = ref.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
       ref.current.style.setProperty('--x', `${x}px`);
       ref.current.style.setProperty('--y', `${y}px`);
     }
