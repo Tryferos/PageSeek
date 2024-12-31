@@ -30,7 +30,7 @@ export const SearchResults = () => {
 
   if (loading && !pageResult?.docs.length) {
     return (
-      <div className="w-full flex flex-wrap gap-y-10 mobile:gap-y-4 items-center justify-center pt-4 gap-x-10 relative mobile:h-[82vh] h-[75vh] overflow-y-auto scrollbar">
+      <div className="w-full flex flex-wrap gap-y-10 mobile:gap-y-4 items-center justify-center pt-4 gap-x-10 relative mobile:h-[77vh] h-[75vh] overflow-y-auto scrollbar">
         {new Array(6).fill(0).map((_, i) => (
           <BookResultShimmer key={i} />
         ))}

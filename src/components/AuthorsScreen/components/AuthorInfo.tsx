@@ -33,7 +33,7 @@ export const AuthorInfo = ({
   return (
     <>
       <title>{fuller_name ?? name}</title>
-      <div className="w-full h-[calc(100vh-40px-50px)] pt-2 small:h-[calc(100vh-40px-40px)] small:pb-12 pb-24 z-[100] font-wotfardRg flex flex-col gap-y-3 small:gap-y-5 pr-1 mobile:pr-0 overflow-y-auto scrollbar absolute left-0 top-10">
+      <div className="w-full h-[calc(100vh-40px-50px)] pt-2 small:h-[calc(100dvh-40px-40px)] small:pb-12 pb-24 z-[100] font-wotfardRg flex flex-col gap-y-3 small:gap-y-5 pr-1 mobile:pr-0 overflow-y-auto scrollbar absolute left-0 top-10">
         <div className="flex gap-x-3 small:flex-col small:gap-y-4 small:items-center w-full large:h-full">
           <figure className="relative w-[35%] min-w-[300px] h-[35vw] min-h-[350px]">
             <ImageFallback

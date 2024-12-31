@@ -26,7 +26,7 @@ export const BookWork = ({
   return (
     <>
       <title>{title}</title>
-      <div className="w-full h-[calc(100vh-40px-50px)] pt-2 small:h-[calc(100vh-40px-40px)] small:pb-12 pb-24 z-[100] font-wotfardRg flex flex-col gap-y-3 small:gap-y-5 pr-1 mobile:pr-0 overflow-y-auto scrollbar absolute left-0 top-10">
+      <div className="w-full h-[calc(100vh-40px-50px)] pt-2 small:h-[calc(100dvh-40px-40px)] small:pb-12 pb-24 z-[100] font-wotfardRg flex flex-col gap-y-3 small:gap-y-5 pr-1 mobile:pr-0 overflow-y-auto scrollbar absolute left-0 top-10">
         <div className="flex gap-x-4 small:flex-col small:gap-y-4 small:items-center">
           <BookImage thumbnail={thumbnail} title={title} bookKey={_key} />
           <div className="flex flex-col justify-between w-[80%] gap-y-2 small:gap-y-4 small:w-full">
