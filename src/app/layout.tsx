@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="preload" href={'/book.svg'} as="image" />
       <body
         className={`${FontFamilies.wotfard} antialiased font-wotfard font-wotfardRg scrollbar overflow-x-hidden`}>
         <main className="w-[100vw] min-h-[70vh] pt-6 px-6 small:pt-4 small:px-2 pb-0 bg-gray-100 relative overflow-x-hidden">
