@@ -119,8 +119,18 @@ export const SortingSubjectSelector = () => {
     startPointRef.current = x;
   };
 
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const x = e.touches[0]?.clientX;
+    startPointRef.current = x;
+  };
+
   const onMouseDownEnd = (e: React.MouseEvent<HTMLDivElement>) => {
     const x = e.clientX;
+    endPointRef.current = x;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const x = e.touches[0]?.clientX;
     endPointRef.current = x;
   };
 
@@ -140,11 +150,15 @@ export const SortingSubjectSelector = () => {
       <div className="flex relative w-[calc(100%-16px)] h-full ">
         <div
           onMouseDown={onMouseDownStart}
+          onPointerDown={onMouseDownStart}
+          onTouchStart={onTouchStart}
           ref={startRef}
           className={bulletClassNames}></div>
         <div className="absolute left-0 h-[2px] translate-y-2 w-full bg-gray-200 rounded-full"></div>
         <div
           onMouseDown={onMouseDownEnd}
+          onPointerDown={onMouseDownEnd}
+          onTouchStart={onTouchEnd}
           ref={endRef}
           className={bulletClassNames}></div>
       </div>
