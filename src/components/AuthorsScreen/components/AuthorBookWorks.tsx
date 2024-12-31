@@ -6,7 +6,7 @@ type Props = {
   name: string;
 };
 export const AuthorBookWorks = async ({id, name}: Props) => {
-  const works = await getAuthorWorksRich({key: id, limit: 5});
+  const works = await getAuthorWorksRich({key: id, limit: 3});
   // const bookWorks = works?.entries.filter(
   //   entry =>
   //     (entry.book.description && entry.book.description.length > 0) ||
@@ -22,11 +22,11 @@ export const AuthorBookWorks = async ({id, name}: Props) => {
   } else {
     return (
       <div className="py-2">
-        <p className="font-wotfardMd text-lg">
+        <p className="font-wotfardMd text-lg small:text-sm small:text-center">
           {name} is renowned for more than {works?.entries.length} works
         </p>
         {
-          <ul className="flex px-2 gap-x-4 overflow-x-auto py-2 scrollbar pb-4">
+          <ul className="flex px-2 gap-x-4 overflow-x-auto py-2 scrollbar pb-4 small:px-1">
             {works.entries
               .sort((a, b) => {
                 if (a.book.description || b.book.description) {

@@ -29,34 +29,34 @@ export const AuthorInfo = ({
     }
     return tempLinks;
   }, [_links, wikipedia]);
+
   return (
     <>
-      <title>{name}</title>
-      <div className="w-full h-full font-wotfardRg flex flex-col gap-y-4">
-        <div className="flex gap-x-3">
-          <figure className="relative w-[40%] min-w-[300px] h-[35vw] min-h-[300px] bg-black">
+      <title>{fuller_name ?? name}</title>
+      <div className="w-full h-[calc(100vh-40px-50px)] pt-2 small:h-[calc(100vh-40px-40px)] small:pb-12 pb-24 z-[100] font-wotfardRg flex flex-col gap-y-3 small:gap-y-5 pr-1 mobile:pr-0 overflow-y-auto scrollbar absolute left-0 top-10">
+        <div className="flex gap-x-3 small:flex-col small:gap-y-4 small:items-center w-full large:h-full">
+          <figure className="relative w-[35%] min-w-[300px] h-[35vw] min-h-[350px]">
             <ImageFallback
               quality={100}
               fallbackSrc="/book.png"
               src={photo ?? '/book.png'}
               alt={name}
+              priority
               fill
             />
           </figure>
-          <div className="flex flex-col justify-between w-[70%]">
-            <div className="flex flex-col gap-y-1">
-              <p className="text-3xl font-wotfardSb w-[100%] texteffect">
+          <div className="flex flex-col justify-between w-[65%] tablet:w-[60%] small:min-h-[10vh] small:w-full small:px-4 mobile:px-0 small:gap-y-2">
+            <div className="flex flex-col gap-y-1 bg small:gap-y-2 b-b">
+              <p className="text-3xl font-wotfardSb w-[100%] texteffect small:text-center">
                 {`${fuller_name ?? name}`}
                 <span className="text-lg ">
                   {fuller_name ? ` (${name})` : ''}
                 </span>
               </p>
-              {links.length > 0 && (
-                <div className="flex flex-col gap-y-3">
-                  {bio && <p className="text-sm text-secondary">{bio}</p>}
-                  <BookLinks links={links} />
-                </div>
-              )}
+              <div className="flex flex-col gap-y-3">
+                {bio && <p className="text-sm text-secondary">{bio}</p>}
+                {links.length > 0 && <BookLinks links={links} />}
+              </div>
             </div>
             <div className="flex flex-col gap-y-2">
               {alternate_names && alternate_names.length > 0 && (

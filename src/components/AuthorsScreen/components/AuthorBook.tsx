@@ -35,14 +35,18 @@ export const AuthorBook = ({
     <li
       ref={ref}
       onMouseMove={onMouseMove}
-      className="px-3 shadow-book-box backgroundeffect hover:shadow-book-box-hover hover:-translate-x-1 hover:-translate-y-1 cursor-pointer py-2 rounded-tl-md min-w-[275px] w-[25%] h-[28vh] relative text-gray-100 overflow-hidden">
+      className="px-3 shadow-book-box backgroundeffect large:hover:shadow-book-box-hover large:hover:-translate-x-1 large:hover:-translate-y-1 cursor-pointer py-2 rounded-tl-md min-w-[275px] w-[25%] h-[28vh] relative text-gray-100 overflow-hidden">
       <Link
         href={`/works/${book._key?.replace('/works/', '')}`}
         className="focus:border-none focus:outline-none">
         <div className="absolute -top-3 -left-3 size-6 bg-orange-700 rotate-45"></div>
         <div className="flex flex-col gap-y-1">
-          <p className="font-wotfardMd text-white">{title ?? _title}</p>
-          {description && <p className="text-sm">{description}</p>}
+          <p className="font-wotfardMd text-white small:text-base">
+            {title ?? _title}
+          </p>
+          {description && (
+            <p className="text-sm small:text-xs">{description}</p>
+          )}
         </div>
         <div className="flex gap-x-1 items-end absolute bottom-2 left-2">
           {first_publish_date && (

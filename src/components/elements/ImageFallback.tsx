@@ -8,6 +8,7 @@ type Props = {
   fill?: boolean;
   loading?: 'eager' | 'lazy';
   quality?: number;
+  priority?: boolean;
 };
 
 export default function ImageFallback({src, fallbackSrc, ...rest}: Props) {
