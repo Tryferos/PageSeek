@@ -44,19 +44,20 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-
-.scrollbar::-webkit-scrollbar {
-  height: 8px;
-  width: 6px;
-  background-color: transparent;
-}
-.scrollbar::-webkit-scrollbar-thumb {
-  background-color: gray;
-  border-radius: 4px;
-}
-.scrollbar::-webkit-scrollbar-truck {
-  background-color: transparent;
-  border-radius: 4px;
+@media (min-width: 640px) {
+  .scrollbar::-webkit-scrollbar {
+    height: 8px;
+    width: 6px;
+    background-color: transparent;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 4px;
+  }
+  .scrollbar::-webkit-scrollbar-truck {
+    background-color: transparent;
+    border-radius: 4px;
+  }
 }
 
 .fixgradient {
@@ -132,14 +133,6 @@ canvas {
   opacity: 1;
 }
 
-.bookeffect {
-  position: relative;
-  height: 3.5vh;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
 .linear-gradient {
   background: linear-gradient(to right bottom, #c2410c, #f97316);
 }
@@ -184,11 +177,21 @@ canvas {
   }
 }
 
+.bookeffect {
+  position: relative;
+  height: 3.5vh;
+  min-height: 40px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
 .bookeffect::before {
   background: radial-gradient(#fed7aa, transparent, transparent);
   content: '';
   position: absolute;
-  width: 40%;
+  width: 50%;
+  min-width: 450px;
   height: 200px;
   opacity: 0;
   transform: translate(-50%, -50%);
@@ -204,7 +207,7 @@ canvas {
   border-radius: 4px;
   content: '';
   position: absolute;
-  inset: 1.5px;
+  inset: 2px;
   background: linear-gradient(to right bottom, #c2410c, #f97316);
   opacity: 0.6;
 }
