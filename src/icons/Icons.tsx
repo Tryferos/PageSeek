@@ -1,9 +1,9 @@
-import {FC} from 'react';
+import {FC, MouseEventHandler} from 'react';
 
 type Props = {
   width?: number | string;
   height?: number | string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<SVGSVGElement>;
   color?: string;
 };
 
@@ -43,9 +43,10 @@ export const EnterIcon: FC<Props> = ({width = 16, height = 16}) => {
   );
 };
 
-export const CloseIcon: FC<Props> = ({width = 16, height = 16}) => {
+export const CloseIcon: FC<Props> = ({width = 16, height = 16, onClick}) => {
   return (
     <svg
+      onClick={onClick}
       width={width}
       height={height}
       xmlns="http://www.w3.org/2000/svg"
