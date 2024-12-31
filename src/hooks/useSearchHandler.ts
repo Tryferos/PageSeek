@@ -10,6 +10,7 @@ import {BookDocumentBlunt} from '@/types/search_books';
 import {SubjectKey} from '@/types/subject';
 import {useMemo} from 'react';
 import {useCheckResetPagination} from './useCheckResetPagination';
+import {useHistory} from '@/slices/history_store';
 
 const PAGE_SIZE = 9;
 
@@ -18,6 +19,7 @@ export const useSearchHandler = () => {
   const {currentPage, setCurrentPage, setTotalPages} = usePagination();
   const {isQueryValid, query} = useSearch();
   const {setResult, lastPageFetched} = useSearchResult();
+  const addToHistory = useHistory(s => s.addToHistory);
   const {
     hasChangedSearchSortingType,
     hasChangeSortingType,
@@ -37,6 +39,7 @@ export const useSearchHandler = () => {
 
   const searchBooks = async () => {
     if (isQueryValid && query && !loading) {
+      addToHistory(query);
       setLoading(true);
       const {searchType, sortingType} = useSearchType.getState();
       if (searchType !== 'subject') {
