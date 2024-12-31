@@ -64,7 +64,7 @@ export const getAuthorWorksRich = async (
 
 const getAuthorWorks = async ({
   key,
-  limit = 5,
+  limit = 3,
   offset = 0,
 }: AuthorWorkPros): Promise<AuthorWorks | null> => {
   const res = await Network.get<AuthorWorks>({

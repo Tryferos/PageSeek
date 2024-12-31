@@ -39,6 +39,10 @@ class Network {
     try {
       const currentMS1 = new Date().getTime();
       const response = await fetch(urlToCall, {
+        next: {
+          revalidate:
+            url.includes('works') || url.includes('authors') ? 300 : 60,
+        },
         method: 'GET',
         headers: {
           ...this._headers(),
