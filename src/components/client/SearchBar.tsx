@@ -28,6 +28,7 @@ export const SearchBar: FC<Props> = ({search, setSearch, searchFunction}) => {
       <div className="absolute w-3 h-2 bg-gray-100 -bottom-[8px] rotate-[120deg] right-[-9.5px]"></div>
       <input
         maxLength={100}
+        id="pageseek-search-bar-input"
         pattern=".{4,75}"
         className="focus:outline-none w-full bg-transparent text-secondary py-0 px-3 invalid:text-red-500"
         type="text"
