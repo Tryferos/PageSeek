@@ -1,4 +1,5 @@
 'use client';
+import {useDimensions} from '@/hooks/useDimensions';
 import {EnterIcon, SearchIcon} from '@/icons/Icons';
 import {useSearchType} from '@/slices/search_type_store';
 import {FC, useRef} from 'react';
@@ -12,6 +13,7 @@ type Props = {
 export const SearchBar: FC<Props> = ({search, setSearch, searchFunction}) => {
   const searchType = useSearchType(s => s.searchType);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const {isSmall} = useDimensions();
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       buttonRef.current?.focus();
@@ -45,8 +47,12 @@ export const SearchBar: FC<Props> = ({search, setSearch, searchFunction}) => {
         <button
           ref={buttonRef}
           onClick={searchFunction}
-          className="bg-tertiary outline-tertiary outline bg-opacity-80 focus:bg-opacity-100 hover:bg-opacity-100 text-white px-2 py-1 rounded cursor-pointer">
-          <EnterIcon width={14} height={14} />
+          className="bg-tertiary outline-tertiary outline bg-opacity-80 focus:bg-opacity-100 hover:bg-opacity-100 text-white px-2 py-1 rounded cursor-pointer fill-white">
+          {isSmall ? (
+            <SearchIcon width={14} height={14} />
+          ) : (
+            <EnterIcon width={14} height={14} />
+          )}
         </button>
       </div>
     </div>
