@@ -26,8 +26,8 @@ export const SortingSubjectSelector = () => {
   const endRef = useRef<HTMLDivElement>(null);
   const startPointRef = useRef<number | null>(null);
   const endPointRef = useRef<number | null>(null);
-  const mouseMoveRef = useRef<(e: MouseEvent) => void>();
-  const mouseUpRef = useRef<(e: MouseEvent) => void>();
+  const mouseMoveRef = useRef<(x: number) => void>();
+  const mouseUpRef = useRef<() => void>();
 
   useEffect(() => {
     if (!start && !end) {
@@ -66,10 +66,9 @@ export const SortingSubjectSelector = () => {
     /*
      * Mouse Move (Start Listening to Drag)
      */
-    mouseMoveRef.current = (e: MouseEvent) => {
+    mouseMoveRef.current = (x: number) => {
       const speed = 1.4;
       if (startPointRef.current && start && end) {
-        const x = e.clientX;
         const startingPoint = startPointRef.current;
         const diff = x - startingPoint;
         setStart(
@@ -80,7 +79,6 @@ export const SortingSubjectSelector = () => {
         );
         startPointRef.current = x;
       } else if (endPointRef.current && start && end) {
-        const x = e.clientX;
         const startingPoint = endPointRef.current;
         const diff = x - startingPoint;
         setEnd(
@@ -96,21 +94,27 @@ export const SortingSubjectSelector = () => {
     /*
      * Mouse Up (Stop Listening to Drag)
      */
-    mouseUpRef.current = (e: MouseEvent) => {
+    mouseUpRef.current = () => {
       startPointRef.current = null;
       endPointRef.current = null;
     };
   }, [startPointRef.current, endPointRef.current, start, end]);
 
   useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => mouseMoveRef.current?.(e);
-    const onMouseUp = (e: MouseEvent) => mouseUpRef.current?.(e);
+    const onMouseMove = (e: MouseEvent) => mouseMoveRef.current?.(e.clientX);
+    const onTouchMove = (e: TouchEvent) =>
+      mouseMoveRef.current?.(e.touches[0]?.clientX);
+    const onMouseUp = () => mouseUpRef.current?.();
 
     window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('touchmove', onTouchMove);
     window.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('touchend', onMouseUp);
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('mouseup', onMouseUp);
+      window.removeEventListener('touchend', onMouseUp);
     };
   }, []);
 
