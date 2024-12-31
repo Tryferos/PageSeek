@@ -19,7 +19,7 @@ export const BookImage = ({thumbnail: _thumbnail, title, bookKey}: Props) => {
   }, [_thumbnail]);
 
   return (
-    <figure className="relative w-[40%] min-w-[300px] h-[35vw] min-h-[300px] bg-black">
+    <figure className="relative w-[35%] min-w-[300px] h-[35vw] min-h-[375px]">
       <ImageFallback
         quality={100}
         fallbackSrc="/book.png"

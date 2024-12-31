@@ -13,7 +13,7 @@ export const BookLinks = ({links}: Props) => {
       <p className="text-sm font-wotfardMd text-secondary underline underline-offset-2">
         Read online
       </p>
-      <ul className="flex scrollbar flex-col gap-y-2 max-h-[11vw] min-h-[90px] overflow-y-auto w-full overflow-x-hidden">
+      <ul className="flex scrollbar flex-col gap-y-2 max-h-[11vw] small:min-h-[155px] min-h-[90px] overflow-y-auto w-full overflow-x-hidden">
         {links.map((link, i) => (
           <Link
             key={i}

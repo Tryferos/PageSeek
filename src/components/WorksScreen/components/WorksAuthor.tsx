@@ -15,17 +15,20 @@ export const WorksAuthor = async ({authorKey, author_photo}: Props) => {
   if (author) {
     return (
       <div className="flex gap-x-2 items-end">
-        <figure className="w-[48px] h-[48px] relative">
+        <figure className="w-[72px] h-[70px] small:w-[96px] small:h-[96px] relative small:*:rounded">
           <ImageFallback
             src={author_photo ?? '/profile.svg'}
             fallbackSrc="/profile.svg"
             alt={author.name}
+            quality={100}
             fill
           />
         </figure>
         <p className="text-sm">
           by{' '}
-          <Link className="underline font-wotfardMd" href={`${authorKey}`}>
+          <Link
+            className="underline font-wotfardMd text-lg"
+            href={`${authorKey}`}>
             {author.name}
           </Link>
         </p>

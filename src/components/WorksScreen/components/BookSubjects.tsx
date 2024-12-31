@@ -26,11 +26,11 @@ export const BookSubjects = (props: Props) => {
 
   const Icon = useMemo(() => {
     if (selectedSubject === 'subject_people') {
-      return <PersonIcon />;
+      return <PersonIcon width={16} height={16} />;
     } else if (selectedSubject === 'subject_places') {
-      return <LocationIcon />;
+      return <LocationIcon width={16} height={16} />;
     } else if (selectedSubject === 'subject_times') {
-      return <ClockIcon />;
+      return <ClockIcon width={16} height={16} />;
     } else {
       return null;
     }
@@ -64,21 +64,23 @@ export const BookSubjects = (props: Props) => {
     return null;
   } else {
     return (
-      <div className="flex flex-col gap-y-2 *:shadow-book-result">
+      <div className="flex flex-col gap-y-2 *:shadow-book-result px-1">
         {menuItems.length > 1 && (
           <div className="flex gap-x-4 w-full px-0 rounded-md">
             {menuItems.map(subject => (
               <div
                 key={subject}
-                className={`${selectedSubject === subject ? 'linear-gradient text-gray-200 font-wotfardMd' : 'hover:scale-101 hover:font-wotfardMd'} rounded px-2 py-1 cursor-pointer flex gap-x-1 items-center`}
+                className={`${selectedSubject === subject ? 'linear-gradient text-gray-200 font-wotfardMd' : 'hover:scale-101 hover:font-wotfardMd'} small:justify-center small:grow rounded px-2 py-1 cursor-pointer flex gap-x-1 items-center`}
                 onClick={() => setSelectedSubject(subject)}>
                 {selectedSubject === subject && Icon}
-                <p className="text-md">{mapKeysToTitles(subject)}</p>
+                <p className="text-md mobile:text-sm small:text-base">
+                  {mapKeysToTitles(subject)}
+                </p>
               </div>
             ))}
           </div>
         )}
-        <div className="grid grid-flow-row grid-row-4 grid-cols-6 gap-x-6 px-3 py-2 rounded-md min-h-[75px] transition-all">
+        <div className="grid grid-flow-row small:grid-cols-2 mobile:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 grid-row-4 grid-cols-6 gap-x-6 px-3 py-2 rounded-md min-h-[75px] transition-all">
           {subjects[selectedSubject]?.map((subject, i: number) => (
             <p
               key={i}
