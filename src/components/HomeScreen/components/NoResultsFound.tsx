@@ -12,7 +12,7 @@ export const NoResultsFound = () => {
     }
   }, [_query]);
   return (
-    <div className="items-center flex flex-col justify-between h-[54.4vh] pt-4">
+    <div className="items-center flex flex-col justify-between h-[54.4vh] pt-4 mt-10">
       <div className="flex flex-col gap-y-2 items-center">
         <p className="texteffect text-2xl font-wotfardSb">PageSeek</p>
         <p className="font-wotfardRg text-xl text-center">

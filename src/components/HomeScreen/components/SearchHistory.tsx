@@ -7,8 +7,6 @@ export const SearchHistory = () => {
   const history = useHistory(s => s.history);
   const removeFromHistory = useHistory(s => s.removeFromHistory);
   const setQuery = useSearch(s => s.setQuery);
-  const query = useSearch(s => s.query);
-  const previousQuery = useSearch(s => s.previousQuery);
   const ref = useRef<HTMLDivElement>(null);
   const onClickRef = useRef<(e: FocusEvent) => void>();
   const onFocusRef = useRef<(e: FocusEvent) => void>();
