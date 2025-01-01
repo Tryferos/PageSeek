@@ -1,4 +1,5 @@
 import {MobileFilters} from './components/MobileFilters';
+import {Particles} from './components/Particles';
 import {SearchMode} from './components/SearchMode';
 import {SearchResults} from './components/SearchResults';
 import {SearchTypeSelector} from './components/SearchTypeSelector';
