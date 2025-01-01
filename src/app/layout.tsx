@@ -8,7 +8,9 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'PageSeek',
-  description: 'Three.js Web App',
+  description: 'A search engine dedicated to exploring books',
+  applicationName: 'PageSeek',
+  authors: [{name: 'Tryferos', url: 'https://github.com/Tryferos/PageSeek'}],
 };
 
 export default function RootLayout({
