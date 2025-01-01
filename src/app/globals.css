@@ -60,6 +60,11 @@ h6 {
   }
 }
 
+.booknoise {
+  background-image: url('/noise-texture.png');
+  background-size: 50% 100%;
+}
+
 .fixgradient {
   background-size: auto 1.9ch;
 }
