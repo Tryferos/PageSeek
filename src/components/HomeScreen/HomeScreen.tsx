@@ -13,8 +13,9 @@ export default function HomeScreen() {
         <MobileFilters />
         <SortingSelector />
       </div>
-      <div className="h-[calc(100vh-50px-12px-24px-70px-3.5vh)] z-[100] small:h-[calc(100dvh-50px-12px-16px-70px-3.5vh)]">
+      <div className="h-[calc(100vh-50px-12px-24px-90px-3.5vh)] z-[100] small:h-[calc(100dvh-50px-12px-16px-90px-3.5vh)] relative bg-blac">
         <SearchResults />
+        <Particles />
       </div>
     </div>
   );
